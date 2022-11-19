@@ -1,0 +1,36 @@
+Problem- Find wether the given number is in pallindrome or not.
+
+Code:
+     package d2009;
+
+public class pallindrome {
+    
+    public static void main(String[] args) {
+  
+        int n=14581641, rev=0, rem, temp;
+  
+        temp = n;
+  
+        for( ;n != 0; n /= 10 )
+        {
+            rem = n % 10;
+            rev= rev* 10 + rem;
+        }
+  
+        if( temp== rev)
+            System.out.println(temp + " PALLINDROME.");
+        else
+            System.out.println(temp + " NOT PALLINDROME.");
+        }
+    }
+    
+Input1- '1654873781'
+Output2- Not Pallindrome
+
+Input2-'151'
+Output2-Pallindrome
+
+
+Explanation-A palindromic number is a number that remains the same when its digits are reversed.
+            The term palindromic is derived from palindrome, which refers to a word whose spelling is
+            unchanged when its letters are reversed.
