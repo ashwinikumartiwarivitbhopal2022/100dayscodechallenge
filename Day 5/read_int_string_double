@@ -1,0 +1,35 @@
+Problem-In this challenge, we have to read an integer, a double, and a String from stdin 
+        then print the values.
+Code:
+     import java.util.Scanner;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int i = scan.nextInt();
+        double d =scan.nextDouble();
+        scan.nextLine();
+        //Both works
+       // String a = scan.nextLine();
+        String s = scan.nextLine();
+        
+
+        // Write your code here.
+
+        System.out.println("String: " + s);
+        System.out.println("Double: " +d);
+        System.out.println("Int: "+ i);
+    }
+}
+
+Input- In first line contains an integer' Welcome to HackerRank's Java tutorials!'
+       second line contains a double'3.1415'
+       third line contains a String'42'
+Output-42
+       3.1415
+       Welcome to HackerRank's Java tutorials! 
+       
+Explanation-In this program we are using String a = scan.nextLine() and
+            String s = scan.nextLine() both for take input in string.       
+        
