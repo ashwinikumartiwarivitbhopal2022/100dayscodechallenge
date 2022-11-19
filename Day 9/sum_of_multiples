@@ -1,0 +1,34 @@
+Problem-In this challenge we are going to find multiples of given numbers which 
+        is in given range and finding its sum.
+        
+Code:
+     package d2009;
+
+      public class multiples {
+        static int find_sum(int N)
+        {
+            int sum = 0;
+            for(int i = 0; i < N; i++)
+                if(i%3 == 0 || i%5 == 0)
+                    sum += i;
+            return sum;                
+        }
+    
+        public static void main (String[] args) 
+        {
+            int N = 15;
+            int sum = find_sum(N);
+            System.out.println(sum);
+        }
+    }  
+ 
+ Input-In this program we have taken 3 and 5 and finding its multiples upto 15(except 15)
+      which are same
+      
+Output- Now multiples of 3 upto 20= 3,6,9,12
+        and multiples of 5 upto 20= 5,10
+ Now,  Sum =45
+ 
+ Explanation- In this program we first find the multiples of given numbers as shown.
+               And,then calculate the sum of given multiples 
+        
