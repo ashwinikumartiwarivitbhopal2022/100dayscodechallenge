@@ -1,0 +1,35 @@
+Problem-Write a program to input a string and also count vowels in the given string.
+
+Code:
+     package d2009;
+ 
+public class vowels {
+    public static void main(String[] args)
+    
+    {
+        String str = "My name is AK";
+        str = str.toLowerCase();
+        int count = 0;
+ 
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == 'a' || str.charAt(i) == 'e'
+                || str.charAt(i) == 'i'
+                || str.charAt(i) == 'o'
+                || str.charAt(i) == 'u') {
+                count++;
+            }
+        }
+        System.out.println(
+            "Total no of vowels in string are: " + count);
+    }
+}
+
+Input-'My name is AK'
+Output- Vowels=4
+
+Input-'My name is 'ASHWINI KUMAR'
+Output- Vowels=8
+
+Explanation-In the above program we are inputting a string and
+            counting the number of vowels in the string.
+            
