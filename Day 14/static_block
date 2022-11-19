@@ -1,0 +1,51 @@
+Problem- Write a code in which initialization blocks are executed when the class is loaded,
+         and we have to initialize static variables in those blocks.
+         
+Code:
+     import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+static Scanner scan = new Scanner(System.in);
+static int B = scan.nextInt();
+static int H = scan.nextInt();
+static boolean flag = true;
+static{
+    try{
+        if(B <= 0 || H <= 0){
+            flag = false;
+            throw new Exception("Breadth and height must be positive");
+        }
+    }catch(Exception e){
+        System.out.println(e);
+    }
+
+}
+
+
+public static void main(String[] args){
+		if(flag){
+			int area=B*H;
+			System.out.print(area);
+		}
+		
+	}//end of main
+
+}//end of class
+
+Input-There are two lines of input. The first line contains B: the breadth of the parallelogram.
+      The next line contains H : the height of the parallelogram.
+      
+Output- If both values are greater than zero, then the main method must output
+        the area of the parallelogram. Otherwise, print "java.lang.Exception:
+         Breadth and height must be positive" without quotes.
+         
+Explanation- In this program we are using exception in which we take two lines
+             First line is for the breadth and second line is for length.
+             
+             
+             
