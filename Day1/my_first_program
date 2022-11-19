@@ -1,0 +1,12 @@
+Problem- To print 'Hello World'and 'Hello Java'
+
+Explantion- In java System.out.println is used to print any string,character or number.
+
+Code:
+        public class Solution {
+
+    public static void main(String[] args) {
+        System.out.println("Hello, World.");
+        System.out.println("Hello, Java.");
+    }
+}
