@@ -1,0 +1,35 @@
+Problem- write a code to print table of any number upto 10.
+
+Code:
+     import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        int N = Integer.parseInt(bufferedReader.readLine().trim());
+         for(int i = 1; i <= 10; i++)
+          System.out.println(N + " x " + i + " = " + (N*i));
+
+        bufferedReader.close();
+    }
+}
+
+
+Input- We are inputting single integer N
+
+Output- It will print table of N
+        it will print 10 lines of output; each line contains i-1 to 10
+        N x i = result.
+        
+        
+Explanation-In this challenge, we are going to use loops to help us do some simple math
+             Simply it will print table of given number upto 10.  
