@@ -1,0 +1,22 @@
+Problem-In this program we have problem to add numbers using Java.
+
+Code:
+     public class Add {
+    public static void main(String[] args) {
+        System.out.print("Sum of the numbers = ");
+        int x = 5;
+        int y = 6;
+        int z = 7;
+        int sum = x + y + z;
+        System.out.print(sum);
+
+    }    
+}
+
+Input -- 
+5 6 7
+Output --
+18
+
+Eplanation- In the above program we are adding numbers with the help of taken variables
+            x,y,z and sum.
