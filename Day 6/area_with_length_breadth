@@ -1,0 +1,29 @@
+Problem-In this program we have to find area of the give scenario.
+
+Code:
+     package d2009;
+
+ abstract class Shape {
+abstract float area(int x,int y);
+}
+class rect extends Shape{
+    
+    /* (non-Javadoc)
+     * @see d2009.Shape#area(int, int)
+     */
+    float area(int x,int y)
+    {
+        return(x*y);
+    }
+
+}  
+
+Input- We are taking input as 'x' and 'y'.
+
+Outut- Output is calculated by multiplying 'x'and'y'.
+
+Example-   x=4cm  and  y=8cm
+ Now,   Area=32cm^2.
+ 
+ Explanation- In this program we are using 'area' method find area of give length
+              and breadth.
