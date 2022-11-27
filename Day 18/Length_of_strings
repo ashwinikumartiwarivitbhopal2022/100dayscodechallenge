@@ -1,0 +1,43 @@
+Problem- Write a program in java to find the length of inputed string in first line, compare  lexographically the size of
+         string if string A is greater print 'Yes' else print 'No' in second line and the whole string in third line.
+
+Code:
+      import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        
+        Scanner sc=new Scanner(System.in);
+        String A=sc.next();
+        String B=sc.next();
+        /* Enter your code here. Print output to STDOUT. */
+          int sum = A.length() + B.length();
+    System.out.println(sum);
+    if(A.compareTo(B)>0) System.out.println("Yes");
+    else System.out.println("No");
+
+    System.out.print(A.substring(0, 1).toUpperCase()+A.substring(1));
+     System.out.print(" "); 
+    System.out.print(B.substring(0, 1).toUpperCase()+B.substring(1)); 
+
+
+}
+
+        
+    }
+
+Input-hello
+      java
+      
+Output-9
+       No
+       Hello Java      
+
+Explanation- String A is "hello" and B is "java".
+             A has a length of 5 , and B has a length of 4 ; the sum of their lengths is 9 .
+             When sorted alphabetically/lexicographically, "hello" precedes "java"; therefore ,
+             A is not greater than B and the answer is No.
+             When we capitalize the first letter of both A and B and then print them separated
+             by a space, we get "Hello Java".
