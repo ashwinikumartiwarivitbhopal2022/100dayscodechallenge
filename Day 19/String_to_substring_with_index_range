@@ -1,0 +1,33 @@
+Problem- Write a Java program to print the given string to its substring consisting of all characters in the inclusive
+          range from 'n' to 'n-1'. You'll find the String class' substring method helpful in completing this challenge.
+          
+Code- import java.io.*;
+      import java.util.*;
+      import java.text.*;
+      import java.math.*;
+      import java.util.regex.*;
+
+        public class Solution {
+
+          public static void main(String[] args) {
+            Scanner in = new Scanner(System.in);
+            String S = in.next();
+            int start = in.nextInt();
+            int end = in.nextInt();
+            System.out.println(S.substring(start, end));
+      }
+   } 
+   
+Input- Helloworld
+       3 7
+       
+Output- lowo
+
+Explanation- By this program we conclude that we are making the sustring from the given string,which index
+             start with 0 and ends upto n-1.
+             
+             Like- 0 1 2 3 4 5 6 7 8 9
+                   H e l l o w o r l d
+         
+        As given range starts from 3 and goes upto 7-1 means 6.
+        It shows the element from index 3 to 6.
