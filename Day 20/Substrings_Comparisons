@@ -1,0 +1,42 @@
+Problem- Write a program to input a string and complete the function so that it
+         finds the lexicographically smallest and largest substrings of length.
+         
+Code-    import java.util.Scanner;
+
+     public class Solution {
+
+       public static String getSmallestAndLargest(String s, int k) {
+         String smallest = "";
+         String largest = "";
+         int minIndex=0;
+         int maxIndex=0;
+        for(int i=0;i<s.length()-k+1;i++){
+            if(s.substring(maxIndex).compareTo(s.substring(i,i+k))<0){
+                maxIndex=i;
+            }
+            if(s.substring(minIndex).compareTo(s.substring(i,i+k))>0){
+                minIndex=i;           
+            }
+            
+        }
+        smallest+=s.substring(minIndex,minIndex+k);
+        largest+=s.substring(maxIndex,maxIndex+k);
+        
+        return smallest + "\n" + largest;
+    }
+    
+Sample Input- welcometojava
+              3
+              
+Sample Output- ava
+               wel
+               
+Explanation-   We have taken a string s='welcometojava' has the lexicographically-ordered substrings of length k=3.
+
+               Like- ['ava','com','elc','eto','jav','lco','met']
+               
+               
+Now,         We then return the first lexicographically smallest substring and the 
+             last lexicographically largest substring as two newline-separated values.
+             So,the stub code  prints 'ava' as our first line of output and 'wel' as 
+             our second line of output.
