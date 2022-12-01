@@ -1,0 +1,41 @@
+Problem - Write a code in java that takes input as a string and check the
+          sequence of characters which reads the same backward or forward.
+          
+Code- import java.io.*;
+      import java.util.*;
+
+   public class Solution {
+
+      public static void main(String[] args) {
+        
+         Scanner sc=new Scanner(System.in);
+          String A=sc.next();
+          /* Enter your code here. Print output to STDOUT. */
+          char firstCharacter = A.charAt(0);
+        char lastCharacter = A.charAt(A.length() - 1);
+
+        if (firstCharacter == lastCharacter) {
+          System.out.println("Yes");
+    }  else {
+        System.out.println("No");
+    }
+    }
+}
+
+
+Sample Input0- Madam
+
+Sample Output0- Yes
+
+Sample Input1- Sir
+
+Sample Output- No
+
+
+Explanation- In this program we are taking strings as input as checking wether the alphabets of the string is same at first 
+             and last .If the alphabets are same then print 'Yes' otherwise it will print 'No'.As given in sample output
+             we take 'Madam' and it is printing 'Yes' and in the other hand we are taking 'Sir' it will printing 'No'.
+
+
+
+          
