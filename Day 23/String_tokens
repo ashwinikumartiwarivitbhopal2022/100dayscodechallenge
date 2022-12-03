@@ -1,0 +1,50 @@
+Problem- Write a program in java which takes input as a string and split the strings into tokens
+         Token to be one or more consecutive English alphabetic letters. Then, print the number
+         of tokens, followed by each token on a new line.
+         
+Code:
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.nextLine();
+             s = s.trim();
+
+     if(s.length()<=0){
+         System.out.println(0);
+         return;
+
+     }else{
+          String[] tokens = s.split("[ ?._'@!,]+");
+            System.out.println(tokens.length);
+                 for(String x : tokens){
+                     System.out.println(x);
+                    }
+        }
+
+}
+    
+        
+    }
+
+Sample input1- He is a very very good boy, isn't he?
+
+Sam[le output- 10
+               He
+               is
+               a
+               very
+               very
+               good
+               boy
+               isn
+               t
+               he
+
+Explanation- In this challenge we consider a token to be a contiguous segment of alphabetic characters.
+             There are a total of 10 tokens in string 's' and each token is printed in the same order
+             in which it appears in string 's'.
