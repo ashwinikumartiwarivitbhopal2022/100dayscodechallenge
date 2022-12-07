@@ -1,0 +1,57 @@
+Problem- Write a program in java for usename validation in which the username consists of 8 to 30 characters inclusive.
+         If the username consists of less than 8 or greater than 30 characters, then it is an invalid username.
+         The username can only contain alphanumeric characters and underscores.Alphanumeric characters describe
+         the character set consisting of lowercase characters(a-z),uppercase characters(A-Z) and digits(0-9).
+         The first character of the username must be an alphabetic character,i.e either lowercase character or
+         uppercase character. If all the given condition is fullfilled print 'Valid' otherwise 'Invalid'.
+         
+         
+Code:
+     import java.util.Scanner;
+class UsernameValidator {
+    
+      public static final String regularExpression = "^[[a-z]|[A-Z]][[a-z]|[A-Z]|[0-9]|[_]]{7,29}";
+}
+
+
+public class Solution {
+    private static final Scanner scan = new Scanner(System.in);
+    
+    public static void main(String[] args) {
+        int n = Integer.parseInt(scan.nextLine());
+        while (n-- != 0) {
+            String userName = scan.nextLine();
+
+            if (userName.matches(UsernameValidator.regularExpression)) {
+                System.out.println("Valid");
+            } else {
+                System.out.println("Invalid");
+            }           
+        }
+    }
+}
+
+Sample Input- 8
+              Julia
+              Samantha
+              Samantha_21
+              1Samantha
+              Samantha?10_2A
+              JuliaZ007
+              Julia@007
+              _Julia007
+              
+Sample Output- Invalid
+               Invalid
+               Valid
+               Valid
+               Invalid
+               Invalid
+               Valid
+               Invalid
+               Invalid 
+               
+Explanation- As given in the above question the first line of input contains an integer , describing the total number of usernames.
+             Each of the next  lines contains a string describing the username. The locked stub code reads the inputs and validates
+             the username.If it fullfills all the criteria the output will be 'valid' or if it is not the output will be 'Invalid'.               
+               
