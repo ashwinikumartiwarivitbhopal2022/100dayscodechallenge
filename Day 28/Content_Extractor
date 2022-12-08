@@ -1,0 +1,58 @@
+Problem - Write a java program to input a string of text in a tag-based language, parse this text
+          and retrieve the contents enclosed within sequences of well-organized tags.The name of
+          he start and end tags must be same.Tags can be nested, but content between nested tags
+          is considered not valid.Tags can consist of any printable characters.
+          
+Code:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution{
+	public static void main(String[] args){
+		
+		Scanner in = new Scanner(System.in);
+		int testCases = Integer.parseInt(in.nextLine());
+		while(testCases>0){
+			String line = in.nextLine();
+			 String regexPattern = "<(.+)>([\\w]+[^<]*)</(\\1)>";
+            Pattern p = Pattern.compile(regexPattern);
+            Matcher m = p.matcher(line);
+            int count = 0;
+            
+            while(m.find())
+            {
+               
+                System.out.println(m.group(2)); 
+                count++;
+            }
+            if(count == 0){
+                System.out.println("None");
+            }
+          	//Write your code here
+			
+			testCases--;
+		}
+	}
+}
+
+Sample Input - 4
+               <h1>Nayeem loves counseling</h1>
+               <h1><h1>Sanjay has no watch</h1></h1><par>So wait for a while</par>
+               <Amee>safat codes like a ninja</amee>
+               <SA premium>Imtiaz has a secret crush</SA premium>
+                              
+Sample Output  - Nayeem loves counseling
+                 Sanjay has no watch
+                 So wait for a while
+                 None
+                 Imtiaz has a secret crush
+                 
+Explanation - In this challenge we are taking string print the content enclosed within valid tags.
+              If a line contains multiple instances of valid content, print out each instance of
+              valid content on a new line; if no valid content is found, print None. 
+              
+              
