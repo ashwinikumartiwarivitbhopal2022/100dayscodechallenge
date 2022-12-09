@@ -1,0 +1,65 @@
+Problem - Write a java program to input array sort them in descending order each number must be printed in
+          the exact same format as it was read from stdin, meaning that .1 is printed as .1 and 0.1 is printed as 0.1 
+          If two numbers represent numerically equivalent values code must be listed in the same order.
+          
+Code:
+
+     import java.math.BigDecimal;
+import java.util.*;
+class Solution{
+
+    public static void main(String []args){
+        //Input
+        Scanner sc= new Scanner(System.in);
+        int n=sc.nextInt();
+        String []s=new String[n+2];
+        for(int i=0;i<n;i++){
+            s[i]=sc.next();
+        }
+      	sc.close();
+          Comparator myComparator = new Comparator(){
+
+        @Override
+        public int compare(Object o1, Object o2) {
+            BigDecimal a = new BigDecimal(String.valueOf(o1));
+            BigDecimal b = new BigDecimal(String.valueOf(o2));
+            return b.compareTo(a);
+        }
+    };
+    Arrays.sort(s,0,n,myComparator);
+    
+        //Output
+        for(int i=0;i<n;i++)
+        {
+            System.out.println(s[i]);
+        }
+    }
+
+}
+
+Sample Input - 9
+              -100
+               50
+               0
+               56.6
+               90
+               0.12
+               .12
+               02.34
+               000.000
+               
+Sample Output - 90
+                56.6
+                50
+                02.34
+                0.12
+                 .12
+                0
+                000.000
+                -100
+                
+Explanation - In this challenge we take an array and we are sorting it in descending order and each number must be printed in
+              the exact same format as it was read from stdin. In this we are using Java's BigDecimal class and it can handle
+              arbitrary-precision signed decimal numbers and we are listing in the same order as the  input was received . 
+              
+              
