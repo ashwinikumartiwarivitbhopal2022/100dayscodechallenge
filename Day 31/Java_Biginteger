@@ -1,0 +1,44 @@
+Problem - Write a java program to add and multiply huge numbers. These numbers are so big that we can't
+          contain them in any ordinary data types like a long integer.
+
+Code :
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+
+    BigInteger a = in.nextBigInteger();
+
+    BigInteger b = in.nextBigInteger();
+
+    BigInteger c = a.add(b);
+
+    System.out.println(c);
+
+    BigInteger d =
+    
+    a.multiply(b);
+
+    System.out.println(d);
+
+    }
+}
+
+Input - 1234
+        20
+        
+Ou[put - 1254
+         24680 
+         
+Explanation - In this challenge we are using power of Java's BigInteger class and there
+              will be two lines containing two numbers a and b.a and b are non-negative
+              integers and can have maximum 200 digits.Output two lines. The first line
+              should contain a + b, and the second line should contain a * b.Not printing
+              any leading zeros.       
