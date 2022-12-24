@@ -1,0 +1,47 @@
+Problem - Write a java program to input an array of n element and subarray of n element array
+          composed from a contiguous block of the original array's elements.
+          
+Code:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+         Scanner scan = new Scanner(System.in);
+    int n = scan.nextInt();
+    int arr[] = new int[n];
+
+    for (int i = 0; i < n; i++){
+        arr[i] = scan.nextInt();
+    }
+
+    int subArr = 0;
+    for (int i = 0; i < n; i++) {
+        int sum = 0;
+        for (int j = i; j < n; j++) {
+            sum += arr[j];
+            if (sum < 0){
+                subArr++;
+            }
+        }
+    }
+    System.out.print(subArr);
+}
+    }
+
+Input - 5
+        1 -2 4 -5 1
+        
+Output - 9
+
+Explanation - In this challenge we are inputting an array and a subarray of an n-element array is an array 
+              composed from a contiguous block of the original array's elements.The sum of an array is the
+              total sum of its elements.An array's sum is negative if the total sum of its elements is negative.
+              An array's sum is positive if the total sum of its elements is positive and  finally print its
+              number negative subarrays on a new line.
+              
