@@ -1,0 +1,77 @@
+Problem - Write a java program to input an array named game and move forward and backward.
+
+Code:
+
+import java.util.*;
+
+public class Solution {
+
+    public static boolean canWin(int leap, int[] game) {
+        
+        for(int i = 0; i < game.length ; i++){
+            if (game[i] != 0 ){
+                try{
+                    for(int j = 1; j <= leap; j++){
+                        if (game[i+j] == 0) {break;}
+                    }        
+                }catch(IndexOutOfBoundsException e){
+                    return true;
+                }
+                return false;
+            }
+                
+        }
+        
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int q = scan.nextInt();
+        while (q-- > 0) {
+            int n = scan.nextInt();
+            int leap = scan.nextInt();
+            
+            int[] game = new int[n];
+            for (int i = 0; i < n; i++) {
+                game[i] = scan.nextInt();
+            }
+
+            System.out.println( (canWin(leap, game)) ? "YES" : "NO" );
+        }
+        scan.close();
+    }
+}
+
+Input - STDIN           Function
+
+        4               q = 4 (number of queries)
+        5 3             game[] size n = 5, leap = 3 (first query)
+        0 0 0 0 0       game = [0, 0, 0, 0, 0]
+        6 5             game[] size n = 6, leap = 5 (second query)
+        0 0 0 1 1 1     . . .
+        6 3
+        0 0 1 1 1 0
+        3 1
+        0 1 0,
+        
+Output - YES
+         YES
+         NO
+         NO 
+         
+Explanation - We perform the following q=4 queries:
+              For game = [0,0,0,0,0]and leap=3 , we can walk and/or jump to the end of 
+              the array because every cell contains a 0 . Because we can win, we return
+              true.
+              
+              For game=[0,0,0,1,1,1] and  leap=5, we walk to index 1 and then jump i+leap=1+5=6
+              units to the end of the array. Because we can win, we return true.
+              
+              For game=[0,0,1,1,1,0] and leap=3, there is no way for us to get past the three
+              consecutive ones. Because we cannot win, we return false
+              
+              For game=[0,1,0] and leap=1 there is no way for us to get past the one at index 1.
+              Because we cannot win, we return false.
+              
+              
