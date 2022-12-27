@@ -1,0 +1,62 @@
+Problem - Write a program in java to input a list and perform the insert and delete operation.
+
+Code :
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Integer> L = new ArrayList<Integer>();
+        int n = sc.nextInt();
+        
+        for(int i=0; i<n; i++)
+            L.add(sc.nextInt());
+            
+        int q = sc.nextInt();
+        for(int j=0; j<q; j++) {
+            String s = sc.next();
+            if(s.compareTo("Insert") == 0) {
+                int x = sc.nextInt();
+                int y = sc.nextInt();
+                L.add(x,y);
+            } else {
+                int x = sc.nextInt();
+                L.remove(x);
+            }
+        }
+        
+        for(int k=0; k<L.size(); k++)
+            System.out.print(L.get(k)+" ");
+        
+    }
+}
+
+Input - 5
+       12 0 1 78 12
+       2
+       Insert
+       5 23
+       Delete
+       0
+ 
+ Output- 0 1 78 12 23
+ 
+ Explanation - In this challenge The first line contains an integer, N (the initial number of elements in L).
+               The second line contains N space-separated integers describing L.
+               The third line contains an integer, Q (the number of queries).
+               The 2Q subsequent lines describe the queries, and each query is described over two lines.
+               
+               If the first line of a query contains the String Insert, then the second line contains two space 
+               separated integers x y , and the value y must be inserted into L at index x.
+               
+               If the first line of a query contains the String Delete, then the second line contains index x, 
+               whose element must be deleted from L.
+               
+               And lastly print the updated list.
+               
