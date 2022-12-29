@@ -1,0 +1,60 @@
+Problem - Write a program in java and take input of a person from phone book  that consists
+          of people's names and their phone number. After that we will be given 
+          some person's name as query. For each query, print the phone number of that person.
+          
+          
+Code :
+
+import java.util.*;
+import java.io.*;
+
+class Solution{
+public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner scanner = new Scanner(System.in);
+        int n= scanner.nextInt();
+        scanner.nextLine();
+        HashMap<String,Integer>mp=new HashMap<>();
+        for(int i=0;i<n;i++){
+            String key=scanner.nextLine();
+            int val=scanner.nextInt();
+            mp.put(key,val);
+            scanner.nextLine();
+        }
+        
+        while(scanner.hasNext()){
+            String query=scanner.nextLine();
+            if(mp.get(query)!=null){
+                System.out.println(query + "=" + mp.get(query));
+            }
+            else{
+                System.out.println("Not found");
+            }
+        }
+    }
+}
+
+Input - 3
+        uncle sam
+        99912222
+        tom
+        11122222
+        harry
+        12299933
+        uncle sam
+        uncle tom
+        harry
+        
+Output - uncle sam=99912222
+         Not found
+         harry=12299933
+         
+Explanation - In the above program The first line have an integer n denoting the number of entries in the phone book
+              .Each entry consists of two lines: a name and the corresponding phone number and person's name consists
+              of only lower-case English letters and it may be in the format 'first-name last-name' or in the format 
+              'first-name'. Each phone number has exactly 8 digits without any leading zeros.Each case, print "Not found"
+              if the person has no entry in the phone book. Otherwise, print the person's name and phone number. See
+              sample output for the exact format. 
+              
+              
+
