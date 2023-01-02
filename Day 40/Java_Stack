@@ -1,0 +1,68 @@
+Problem - Write a program in java which takes input as string and does the stack operation and check
+          whether the string is balanced or not.
+          
+Code:
+
+import java.util.*;
+class Solution{
+    
+    public static  boolean  isValid(String s) {
+       Stack<Character>st=new Stack<>();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='('||s.charAt(i)=='['||s.charAt(i)=='{'){
+                st.push(s.charAt(i));
+            }
+            else{
+                if(st.empty())return false;
+                if(st.peek()=='(' && s.charAt(i)==')' ||st.peek()=='[' && s.charAt(i)==']' || st.peek()=='{' && s.charAt(i)=='}') {
+                    st.pop();
+                }
+                else{
+                    return false;
+                }  
+            }  
+        }
+        
+       return st.empty();    
+    }
+	
+	public static void main(String []argh)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		while (sc.hasNext()) {
+			String input=sc.next();
+            //Complete the code
+            boolean ans=isValid(input);
+            if(ans==true){
+                System.out.println(true);
+            }
+            else{
+               System.out.println(false); 
+            }
+		}
+		
+	}
+}
+
+Input:
+{}()
+({()})
+{}(
+[]
+
+Output:
+true
+true
+false
+true
+
+Explanation - In this program there will be multiple lines in the input file, each having a single non-empty string.
+              We should read input till end-of-file.A string containing only parentheses is balanced if the following
+              is true: 1. if it is an empty string 2. if A and B are correct, AB is correct, 3. if A is correct, (A)
+              and {A} and [A] are also correct.
+              
+              Examples of some correctly balanced strings are: "{}()", "[{()}]", "({()})"
+              Examples of some unbalanced strings are: "{}(", "({)}", "[[", "}{".
+              
+              For each case,we are printing 'true' if the string is balanced, 'false' otherwise.
