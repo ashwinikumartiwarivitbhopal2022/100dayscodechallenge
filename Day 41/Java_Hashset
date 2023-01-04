@@ -1,0 +1,69 @@
+Problem- Write a java program to input n pairs of string and take each pair as input,we need to print number
+         of unique pairs we currently have.
+         
+Code :
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+ public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        int t = s.nextInt();
+        String [] pair_left = new String[t];
+        String [] pair_right = new String[t];
+        
+        for (int i = 0; i < t; i++) {
+            pair_left[i] = s.next();
+            pair_right[i] = s.next();
+        }
+ Set<String> out= new HashSet<>();
+    for(int i=0;i<t;i++){
+        String n = pair_left[i]+"_"+pair_right[i];
+        out.add(n);
+        System.out.println(out.size());
+        
+    }
+    
+
+    }
+}
+
+Input:
+
+5
+john tom
+john mary
+john tom
+mary anna
+mary anna
+
+Output:
+
+1
+2
+2
+3
+3
+
+
+Explanation - In the first line, there will be an integer T denoting number of pairs. Each of the next T
+              lines will contain two strings seperated by a single space.
+              
+              After taking the first input, we have only one pair: (john,tom)
+              
+              After taking the second input,we have two pairs: (john, tom) and (john, mary)
+              
+              After taking the third input,we still have two unique pairs.
+              
+              After taking the fourth input,we have three unique pairs: (john,tom), (john, mary) and (mary, anna)
+              
+              After taking the fifth input,we still have three unique pairs.
+              
+              Lastly Print T lines. In the ith line, print number of unique pairs you have after taking ith pair as input.
+              
+              
