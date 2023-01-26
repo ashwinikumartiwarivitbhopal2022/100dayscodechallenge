@@ -1,0 +1,72 @@
+Problem - Write a program in java which takes integer as input and implement exception handling with
+          the help of try n catch block.
+          
+Code:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int x;
+        int y;
+        
+        try{
+            x = input.nextInt();
+            y = input.nextInt();
+            float resp = x/y;
+            if(resp%10==0){
+                System.out.println(Math.round(resp));
+            }else{
+                System.out.println(y);
+            }
+        
+        }catch(InputMismatchException e){
+            System.out.println(e.getClass().toString().substring(6));
+        }catch(ArithmeticException a){
+            System.out.println(a);
+        }
+    }
+}
+
+Input 0:
+
+10
+3
+
+Output 0:
+
+3
+
+Input 1:
+
+10
+Hello
+
+Output 1:
+
+java.util.InputMismatchException
+
+Input 2:
+
+23.323
+0
+
+Output:
+
+java.util.InputMismatchException
+
+
+Explanation - Exception handling is the process of responding to the occurrence, during computation, of exceptions
+              anomalous or exceptional conditions requiring special processing – often changing the normal flow of
+              program execution.As we know Java has built-in mechanism to handle exceptions. Using the try statement
+              we can test a block of code for errors. The catch block contains the code that says what to do if
+              exception occurs.
+              
+              So, in this challenge we are doing the same, we have taken  two integers  and  as input, you have to compute
+              .If  and  are not  bit signed integers or if  is zero, exception will occur and we have to report it.
