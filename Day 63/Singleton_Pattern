@@ -1,0 +1,46 @@
+Problem - Write a code in java to take input as string and a static method and returns single instance of singleton class.
+
+
+Code:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.lang.reflect.*;
+
+
+class Singleton{
+    public String str;
+private static Singleton INSTANCE;
+
+private Singleton() {}
+
+public static Singleton getSingleInstance() {
+    if (INSTANCE != null) {
+        return INSTANCE;
+    }
+    synchronized(Singleton.class) {
+        if (INSTANCE != null) {
+            return INSTANCE;
+        }
+        INSTANCE = new Singleton();
+        return INSTANCE;
+    }
+  } 
+}
+
+Input:
+hello world
+
+Output:
+Hello I am a singleton! Let me say hello world to you.
+
+Explanation - In this program we are making class 'Singleton' in which  a static method named getSingleInstance
+              that returns the single instance of the Singleton class.We are taking input as string as we seen
+              above and simply printing the output.
+              
+              The singleton pattern is a design pattern that restricts the instantiation of a class to one object.
+              This is useful when exactly one object is needed to coordinate actions across the system.
+              Source: Wikipedia.
