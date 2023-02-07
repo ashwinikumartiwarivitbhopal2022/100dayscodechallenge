@@ -1,0 +1,65 @@
+Problem - Write a code in java to implement a cryptographic hash function with a 128-bit hash value using Message Digest Algorithm.
+
+
+Code:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.security.MessageDigest;
+import javax.xml.bind.DatatypeConverter;
+import java.security.NoSuchAlgorithmException;
+
+
+public class Solution {
+
+    public static void main(String[] args) {
+         Scanner sc = new Scanner(System.in);
+    String password=sc.nextLine();
+    System.out.println(doHashing(password));
+}
+
+public static  String doHashing(String password)
+{
+    try{
+    MessageDigest message = MessageDigest.getInstance("MD5");
+    message.update(password.getBytes());
+    byte[] result=message.digest();
+    StringBuffer sb= new StringBuffer();
+    for(byte b:result)
+    {
+        sb.append(String.format("%02x",b));
+    }
+    return sb.toString(); 
+    }
+    catch (NoSuchAlgorithmException e) { 
+        e.printStackTrace();
+    }
+    return ""; 
+  }
+}
+
+Input0:
+HelloWorld
+
+Output0:
+68e109f0f40ca72a15e05cc22786f8e6
+
+Input1:
+Javarmi123
+
+Output1:
+2da2d1e0ce7b4951a858ed2d547ef485
+
+Explanation - In this challenge we are implementing message digest algorithm,cryptographic hash function with a 128-bit hash value.
+              We are simply taking a single alphanumeric string denoting 's'and Printing the MD5 encryption value of  on a new line.
+              
+About MD5 - MD5 (Message-Digest algorithm 5) is a widely-used cryptographic hash function with a 128-bit hash value. Here are some common uses for MD5
+            * To store a one-way hash of a password.
+            * To provide some assurance that a transferred file has arrived intact.
+            
+            MD5 is one in a series of message digest algorithms designed by Professor Ronald Rivest of MIT (Rivest,1994 ); however, the security of MD5 has
+            been severely compromised, most infamously by the Flame malware in 2012 . The CMU Software Engineering Institute essentially considers MD5 to be
+            "cryptographically broken and unsuitable for further use".
