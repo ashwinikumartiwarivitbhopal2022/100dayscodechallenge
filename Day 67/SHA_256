@@ -1,0 +1,75 @@
+Problem - Write a program in java which takes input as string and implement secure hash alogorithm(SHA-256).
+
+
+Code:
+
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+import java.security.MessageDigest;
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+
+public class Solution {
+
+    private static String s;
+    public static void main(String[] args) {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        try{
+            s = br.readLine();
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+        try{
+            // Static getInstance method is called with hashing SHA
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            // digest() method called
+            // to calculate message digest of an input
+            byte[] result = md.digest(s.getBytes(StandardCharsets.UTF_8));
+            
+            // Convert byte array into signum representation
+            BigInteger number = new BigInteger(1, result);
+            StringBuilder hexString = new StringBuilder(number.toString(16));
+ 
+            // Pad with leading zeros
+            while (hexString.length() < 64)
+            {
+                hexString.insert(0, '0');
+            }
+            System.out.println(hexString.toString());
+ 
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalArgumentException(e);
+        }
+    }
+
+    }
+    
+Input0:
+HelloWorld
+
+Output0:
+872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4
+
+Input1:
+Javarmi123
+
+Output1:
+f1d5f8d75bb55c777207c251d07d9091dc10fe7d6682db869106aacb4b7df678
+
+
+Explanation - In this challenge we are  implementing Cryptographic hash functions are mathematical operations run on digital data;
+              by comparing the computed hash (i.e., the output produced by executing a hashing algorithm) to a known and expected 
+              hash value, a person can determine the data's integrity.
+              
+              We are taking a single alphanumeric string 's' denoting and then printing the SHA-256 encryption value of  on a new line.
+              
+About SHA-256 - Secure Hash Algorithm 2 (SHA-2) is a set of cryptographic hash functions designed by the National Security Agency (NSA).
+                It consists of six identical hashing algorithms (i.e., SHA-256, SHA-512, SHA-224, SHA-384, SHA-512/224, SHA-512/256)
+                with a variable digest size. SHA-256 is a 256-bit (32 byte) hashing algorithm which can calculate a hash code for an input
+                of up to 264-1 bits. It undergoes  rounds of hashing and calculates a hash code that is a 64-digit hexadecimal number.
+                
+                
