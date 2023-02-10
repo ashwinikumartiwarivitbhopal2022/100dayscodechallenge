@@ -1,0 +1,41 @@
+Problem - Write a java program to implement link list iterator in which iteration is in descending or in reverse order.
+
+
+Code:
+
+import java.util.Iterator;
+import java.util.LinkedList;
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList<string> list = new LinkedList<>();
+        list.add("Mumbai");
+        list.add("Delhi");
+        list.add("Kolkata");
+        list.add("Bangalore");
+        list.add("Hyderabad");
+
+        Iterator<string> iterator = list.descendingIterator();
+        System.out.println("The cities are: ");
+        while(iterator.hasNext()){
+            System.out.print(iterator.next() + " ");
+        }
+    }
+}
+
+Input:
+Mumbai
+Delhi
+Kolkata
+Banglore
+Hyderabad
+
+
+Output:
+The cities are:
+Hyderabad Bangalore Kolkata Delhi Mumbai
+
+Explanation - In this challenge we are implementing java descending iterator with the help of link list.At first we
+             created a LinkedList instance using new LinkedList().Then, we have added some elements to LinkedList.
+             After that, we have used LinkedList descendingIterator() method to get the iterator in reverse order.
+             Finally, Traversed the LinkedList and printed elements.
