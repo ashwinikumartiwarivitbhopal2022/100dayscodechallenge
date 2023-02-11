@@ -1,0 +1,44 @@
+Problem - Write a program to implement java TreeMap with suitable output.
+
+
+Code:
+
+import java.util.TreeMap;
+
+class Main {
+    public static void main(String[] args) {
+        // Creating TreeMap of even numbers
+        TreeMap<String, Integer> evenNumbers = new TreeMap<>();
+
+        // Using put()
+        evenNumbers.put("Two", 2);
+        evenNumbers.put("Four", 4);
+
+        // Using putIfAbsent()
+        evenNumbers.putIfAbsent("Six", 6);
+        System.out.println("TreeMap of even numbers: " + evenNumbers);
+
+        //Creating TreeMap of numbers
+        TreeMap<String, Integer> numbers = new TreeMap<>();
+        numbers.put("One", 1);
+
+        // Using putAll()
+        numbers.putAll(evenNumbers);
+        System.out.println("TreeMap of numbers: " + numbers);
+    }
+}
+
+
+Input:
+1,2,4,6
+
+
+Output:
+TreeMap of even numbers: {Four=4, Six=6, Two=2}
+TreeMap of numbers: {Four=4, One=1, Six=6, Two=2}
+
+Explanation - In this challenge we are implementing java TreeMap. In the above code, we have created a TreeMap named numbers
+              without any arguments. In this case, the elements in TreeMap are sorted naturally (ascending order).However, we
+              can customize the sorting of elements by using the Comparator interface.
+              
+              
