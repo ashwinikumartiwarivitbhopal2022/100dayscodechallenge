@@ -1,0 +1,59 @@
+Problem - Write a Java program to find a specified element in a given array of elements using Binary Search.
+
+
+Code:
+
+public class Main {
+     public static int binarySearch(int[] nums, int flag) {
+        int hi_num = nums.length - 1;
+        int lo_num = 0;
+        while (hi_num >= lo_num) {
+            int guess = (lo_num + hi_num) >>> 1;   
+            if (nums[guess] > flag) {
+                hi_num = guess - 1;
+            } else if (nums[guess] < flag) {
+                lo_num = guess + 1;
+            } else {
+                return guess;
+            }
+        }
+        return -1;
+    }
+ 
+    public static void main(String[] args) {
+        int[] nums = {1, 5, 6, 7, 8, 11};
+        int search_num = 7;
+        int index = binarySearch(nums, search_num);
+        if (index == -1) {
+            System.out.println(search_num + " is not in the array");
+        } else {
+            System.out.println(search_num + " is at index " + index);
+        }
+    }
+}
+
+Input0:
+7
+
+Output0:
+7 is at index 3
+
+Input1:
+1
+
+Output1:
+1 is at index 0
+
+Input2:
+10
+
+Output2:
+10 is not in the array
+
+
+Explanation - In this challenge we are implementing simple searching algorithm using array.We have taken a sorted array
+              and set the low index to the first element of the array and the high index to the last element.We set the
+              middle index to the average of the low and high indices.If the element at the middle index is the target
+              element, return the middle index.If the target element is less than the element at the middle index, set
+              the high index to the middle index – 1 and if the target element is greater than the element at the middle
+              index, set the low index to the middle index + 1.
