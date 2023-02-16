@@ -1,0 +1,92 @@
+Problem - Write a code in java to implement different flow control statements to iterate over entries in the HashMap.
+
+
+Code:
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Iterator;
+public class HashMapExample {
+  public static void main(String []args) {
+ 
+    //A HashMap object called birds.
+    HashMap<Integer, String> birdsMap = new HashMap<Integer, String>();
+ 
+    //Add key and value pairs to birds (Integer, BirdName)
+    birds.put(1, "Parrot");
+    birds.put(2, "Falcon");
+    birds.put(3, "Swans");
+    birds.put(4, "Woodpecker");
+    birds.put(5, "Owl");
+ 
+    //Printing the entrySet with the help of for-each loop.
+    System.out.println("====Using for-each loop====");
+    for(Map.Entry<Integer,String> entry : birdsMap.entrySet()) {
+      System.out.println("Key:= " + entry.getKey " , Value:= " + getValue());
+    }
+ 
+    //Printing the key-value pairs using Iterator.
+    System.out.println("====Using Iterator====");
+    Iterator<Map.Entry<Integer, String>> itr = birdsMap.entrySet().iterator();
+    while(itr.hasNext()) {
+      Map.Entry<Integer, String> entry = itr.next();
+      System.out.println("Key:= " + entry.getKey " , Value:= " + getValue());
+    }
+ 
+    //Printing the key-value pair using forEach method of Java 8.
+    System.out.println("====Using forEach method of Java 8====");
+    birdsMap.forEach((k,v) -> System.out.println("Key:=" +k + " , Value=>" + v));
+ 
+    //Iterating just over keys.
+    System.out.println("====Iterating over just keys====");
+    for(Integer key : birdsMap.keySet()) {
+      System.out.println("Key:=" +key);
+    }
+ 
+    //Iterating just over values.
+    System.out.println("====Iterating over just values====");
+    for(String value : birdsMap.values()) {
+      System.out.println("Value:=" +value);
+    }
+  }
+}
+
+Output:
+
+====Using for-each loop====
+Key:= 1 , Value:= Parrot
+Key:= 2 , Value:= Falcon
+Key:= 3 , Value:= Swans
+Key:= 4 , Value:= Woodpecker
+Key:= 5 , Value:= Owl
+====Using Iterator====
+Key:= 1 , Value:= Parrot
+Key:= 2 , Value:= Falcon
+Key:= 3 , Value:= Swans
+Key:= 4 , Value:= Woodpecker
+Key:= 5 , Value:= Owl
+====Using forEach method of Java 8====
+Key:= 1 , Value:= Parrot
+Key:= 2 , Value:= Falcon
+Key:= 3 , Value:= Swans
+Key:= 4 , Value:= Woodpecker
+Key:= 5 , Value:= Owl
+====Iterating over just keys====
+Key:= 1
+Key:= 2
+Key:= 3
+Key:= 4
+Key:= 5
+====Iterating over just values====
+Value:= Parrot
+Value:= Falcon
+Value:= Swans
+Value:= Woodpecker
+Value:= Owl:
+
+
+Explanation - In this challenge we are implementing differnt flow control statements in a single program using HashMap.
+              At first we  are creating a HashMap object in Java then iterating over each element in the HashMap using 
+              different methods.We have to use HashMap class and its methods, one needs to import java.util.HashMap or
+              its superclass.Every key in a HashMap is unique.Every key and value pair in the HashMap is considered to 
+              be an entry.Any value in the HashMap can only be accessed by its respective key. Then we print the HashTable.
