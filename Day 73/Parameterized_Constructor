@@ -1,0 +1,51 @@
+Problem - Write a java code to implement parameterized constructor with a set of definite arguments.
+
+
+Code:
+
+public class School
+{
+    String name;
+    String contact;
+ 
+    School(String n, String c)
+    {
+        name = n;
+        contact = c;
+    }
+ 
+    void printData()
+    {
+        System.out.println(“Name:”+name+”\tContact:”+contact);
+    }
+ 
+    public static void main(String args[])
+    {
+       School s1 = new School(“Oxford High School”,”9638527410”);
+ 
+       School s2 = new School(“Cambridge International School”,”9175346097”);
+ 
+       School s3 = new School(“Nath Valley Central School”,”8529637410”);
+ 
+       s1.printData();
+ 
+       s2.printData();
+ 
+       s3.printData();
+    }
+}
+
+Output:
+Oxford High School         9638527410
+Cambridge International School                                9175346097
+Nath Valley Central School           8529637410
+
+
+Explanation - In this challenge we are implementing parameterized constructor with a set of definite arguments
+              In this constructors are used to offering distinct values to varied objects of particular class.
+              With a parameterized constructor for a class, one must provide initial values as arguments, otherwise,
+              the compiler reports an error.Sometimes there is a need to call the default constructor from another 
+              constructor of the same class.We can also pass arguments while creating other instances of a class. 
+              In this way parameterized constructors fulfills the need to copy one object’s values to another.
+              
+
