@@ -1,0 +1,92 @@
+Problem - Write a code in java which takes input as array and perform mathematical operation i.e Quality Factor.
+
+
+Code:
+
+import java.util.*;
+import java.io.*;
+import java.lang.Math;
+
+public class Main {
+  public static void main(String args[]) throws IOException {
+
+    Scanner sc = new Scanner(System.in);
+    int n = sc.nextInt();
+    int arr[] = new int[n];
+    for(int i=0;i<n;i++)
+      arr[i] = sc.nextInt();
+    int current = 0;
+    long moves = 0;
+    for(int i=0;i<n;i++)
+    {
+        moves += Math.abs(arr[i]-current);
+        current = arr[i];
+    }
+    System.out.println(moves);
+  }
+}
+
+
+Input : N = 5, A[] = [1, 2, 3, 4, 5]
+
+
+Output: 5
+
+
+Explanation:
+
+Quality factor of given container   [1, 2, 3, 4, 5]
+Quality factor of magical container [0, 0, 0, 0, 0]
+
+Adding a Red stone at index 0,
+Quality factor of given container   [1, 2, 3, 4, 5]
+Quality factor of magical container [1, 1, 1, 1, 1]
+
+Adding a Red stone at index 1,
+Quality factor of given container   [1, 2, 3, 4, 5]
+Quality factor of magical container [1, 2, 2, 2, 2]
+
+Adding a Red stone at index 2,
+Quality factor of given container   [1, 2, 3, 4, 5]
+Quality factor of magical container [1, 2, 3, 3, 3]
+
+Adding a Red stone at index 3,
+Quality factor of given container   [1, 2, 3, 4, 5]
+Quality factor of magical container [1, 2, 3, 4, 4]
+
+Adding a Red stone at index 4,
+Quality factor of given container   [1, 2, 3, 4, 5]
+Quality factor of magical container [1, 2, 3, 4, 5]
+
+Both containers are equalised by performing 5 operations.
+
+
+Approach:
+
+A[] = [1, 2, 3, 2]
+Q[] = [0, 0, 0, 0]
+
+count = 0
+current = 0
+
+i = 0
+count = count + abs(A[i] - current) = 0 + abs(A[0] - 0) = 0 + 1 = 1
+current = A[0] = 1
+i++ 
+
+i = 1
+count = count + abs(A[i] - current) = 1 + abs(A[1] - 1) = 1 + abs(2 - 1) = 2
+current = A[1] = 2
+i++ 
+
+i = 2
+count = count + abs(A[i] - current) = 2 + abs(A[2] - 2) = 2 + abs(3 - 2) = 3
+current = A[2] = 3
+i++
+
+i = 3
+count = count + abs(A[i] - current) = 3 + abs(A[3] - 3) = 3 + abs(2 - 3) = 4
+current = A[3] = 2
+i++ 
+
+Total operations to be performed are 4.
