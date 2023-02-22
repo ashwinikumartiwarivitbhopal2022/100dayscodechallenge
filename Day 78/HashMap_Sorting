@@ -1,0 +1,104 @@
+Problem - Write a Java program that sorts HashMap by value.
+
+
+Code:
+
+import java.util.Collections;  
+import java.util.Comparator;  
+import java.util.HashMap;  
+import java.util.Iterator;  
+import java.util.LinkedHashMap;  
+import java.util.LinkedList;  
+import java.util.List;  
+import java.util.Map;  
+import java.util.Set;  
+public class SortHashMapValue   
+{  
+public static void main(String[] args)   
+{  
+//implementing HashMap  
+   HashMap<Integer, String> hm = new HashMap<Integer, String>();  
+   hm.put(6, "Tushar");  
+   hm.put(12, "Ashu");  
+   hm.put(5, "Zoya");  
+   hm.put(78, "Yash");  
+   hm.put(10, "Praveen");  
+   hm.put(67, "Boby");  
+   hm.put(1, "Ritesh");  
+   System.out.println("Before Sorting:");  
+   Set set = hm.entrySet();  
+   Iterator iterator = set.iterator();
+   
+while(iterator.hasNext())   
+{  
+   Map.Entry map = (Map.Entry)iterator.next();  
+   System.out.println("Roll no:  "+map.getKey()+"     Name:   "+map.getValue());  
+}  
+Map<Integer, String> map = sortValues(hm);   
+   System.out.println("\n");  
+   System.out.println("After Sorting:");  
+   Set set2 = map.entrySet();  
+   Iterator iterator2 = set2.iterator();
+   
+while(iterator2.hasNext())   
+{  
+   Map.Entry me2 = (Map.Entry)iterator2.next();  
+   System.out.println("Roll no:  "+me2.getKey()+"     Name:   "+me2.getValue());  
+  }  
+}  
+//method to sort values  
+private static HashMap sortValues(HashMap map)   
+{   
+   List list = new LinkedList(map.entrySet());  
+//Custom Comparator  
+   Collections.sort(list, new Comparator()   
+{  
+
+public int compare(Object o1, Object o2)   
+{  
+   return ((Comparable) ((Map.Entry) (o1)).getValue()).compareTo(((Map.Entry) (o2)).getValue());  
+}  
+});  
+//copying the sorted list in HashMap to preserve the iteration order  
+   HashMap sortedHashMap = new LinkedHashMap();  
+for (Iterator it = list.iterator(); it.hasNext();)   
+{  
+   Map.Entry entry = (Map.Entry) it.next();  
+   sortedHashMap.put(entry.getKey(), entry.getValue());  
+}   
+return sortedHashMap;  
+  }  
+} 
+
+
+Input:
+Before Sorting:
+Roll no:  1     Name:   Ritesh
+Roll no:  67   Name:   Boby
+Roll no:  5     Name:   Zoya
+Roll no:  6     Name:   Tushar
+Roll no:  10   Name:   Praveen
+Roll no:  12   Name:   Ashu
+Roll no:  78   Name:   Yash
+
+
+Output:
+After Sorting:
+Roll no:  12     Name:   Ashu
+Roll no:  67     Name:   Boby
+Roll no:  10     Name:   Praveen
+Roll no:  1       Name:   Ritesh
+Roll no:  6       Name:   Tushar
+Roll no:  78     Name:   Yash
+Roll no:  5       Name:   Zoya
+
+Explanation:
+In this challenge we are  showing code, how to sort the entries based on value and store them into
+LinkedHashMap, which maintains the order of insertion.To sort the HashMap by values, we need to create 
+a Comparator. It compares two elements based on the values.After that get the Set of elements from the
+Map and convert Set into the List. Use the Collections.sort(List) method to sort the list of elements
+by values by passing customized comparator. Now create a new LinkedHashMap and copy the sorted elements
+into that. Since LinkedHashMap guarantees the insertion order of mappings. We get a HashMap whose values 
+are in sorted order.
+
+
