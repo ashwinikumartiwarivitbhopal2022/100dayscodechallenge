@@ -1,0 +1,56 @@
+Problem - Write a code for given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+
+Code:
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+         Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int[] array=new int[n];
+        int[] array1=new int[n];
+        for(int i=0;i<n;i++){
+            array[i]=sc.nextInt();
+        }
+        int a=sc.nextInt();
+        
+        int j=0;
+        int k=a;
+        for(int i=(n-a);i<n;i++){
+            array1[j]=array[i];
+            j++;  
+        }
+        for(int l=0;l<(n-a);l++){
+            array1[k]=array[l];
+            k++;
+        }
+        
+        
+        for(int i=0;i<n;i++){
+            System.out.print(array1[i]+" ");
+        }
+    }
+}
+
+Input:
+7
+1 2 3 4 5 6 7
+3
+
+Output:
+5 6 7 1 2 3 4
+
+
+Explnation - In this challenge we are taking an array and rotating the array.First line contains the value of size of your array.
+             Line consists of 'n' space seperated integers representing the values present in the Array.Third line having the K 
+             value, how much we want to rotate.
+             
+             rotate 1 steps to the right: [7,1,2,3,4,5,6]
+             
+             rotate 2 steps to the right: [6,7,1,2,3,4,5]
+             
+             rotate 3 steps to the right: [5,6,7,1,2,3,4]
+            
