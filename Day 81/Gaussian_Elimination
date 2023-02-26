@@ -1,0 +1,147 @@
+Problem - Write a code in java to implement Gaussian Elimination  method to solve linear equation.
+
+
+Code:
+
+import java.io.*;
+class Main
+     {
+      public static int N = 3;
+    static void gaussianElimination(double mat[][])
+{
+   int singular_flag = forwardElim(mat);
+	 if (singular_flag != -1)
+	{
+	System.out.println("Singular Matrix.");
+  
+if(mat[singular_flag][N] != 0)
+		System.out.print("Inconsistent System.");
+else
+		System.out.print("May have infinitely many solutions.");
+
+	return;
+	}
+	backSub(mat);
+}
+static void swap_row(double mat[][], int i, int j)
+{
+
+	for (int k = 0; k <= N; k++)
+	{
+	double temp = mat[i][k];
+	mat[i][k] = mat[j][k];
+	mat[j][k] = temp;
+	}
+}
+
+static void print(double mat[][])
+{
+	for (int i = 0; i < N; i++, System.out.println())
+	for (int j = 0; j <= N; j++)
+		System.out.print(mat[i][j]);
+	System.out.println();
+}
+
+static int forwardElim(double mat[][])
+{
+	for (int k = 0; k < N; k++)
+	{
+
+	int i_max = k;
+	int v_max = (int)mat[i_max][k];
+
+	for (int i = k + 1; i < N; i++)
+		if (Math.abs(mat[i][k]) > v_max)
+		{
+		v_max = (int)mat[i][k];
+		i_max = i;
+		}
+
+	if (mat[k][i_max] == 0)
+		return k; // Matrix is singular
+
+	if (i_max != k)
+		swap_row(mat, k, i_max);
+
+	for (int i = k + 1; i < N; i++)
+	{
+		double f = mat[i][k] / mat[k][k];
+		for (int j = k + 1; j <= N; j++)
+		mat[i][j] -= mat[k][j] * f;
+		mat[i][k] = 0;
+	}
+}
+	return -1;
+}
+
+static void backSub(double mat[][])
+{
+	double x[]
+	= new double[N]; // An array to store solution
+
+	for (int i = N - 1; i >= 0; i--)
+	{
+	x[i] = mat[i][N];
+	for (int j = i + 1; j < N; j++)
+	{
+		x[i] -= mat[i][j] * x[j];
+	}
+	x[i] = x[i] / mat[i][i];
+}
+
+	System.out.println();
+	System.out.println("Solution for the system:");
+	for (int i = 0; i < N; i++)
+	{
+	System.out.format("%.6f", x[i]);
+	System.out.println();
+	}
+}
+
+public static void main(String[] args){
+
+	/* input matrix */
+	double mat[][] = { { 3.0, 2.0, -4.0, 3.0 },
+					         { 2.0, 3.0, 3.0, 15.0 },
+					         { 5.0, -3, 1.0, 14.0 } };
+
+	gaussianElimination(mat);
+  }
+}
+
+
+
+Input Matrix:
+{ 3.0, 2.0, -4.0, 3.0 }
+{ 2.0, 3.0, 3.0, 15.0 }
+{ 5.0, -3, 1.0, 14.0 } 
+
+
+Output:
+Solution for the system:
+3.000000
+1.000000
+2.000000
+
+
+Explanation - In this challenge we are solving a mathematical matrix problem in which we are taking input, a matrix
+              then we are finding solution by Gaussian Elimination method with the help of Partial pivoting.The 
+              algorithm is majorly about performing a sequence of operations on the rows of the matrix. What we would
+              like to keep in mind while performing these operations is that we want to convert the matrix into an upper
+              triangular matrix in row echelon form. The operations can be: 
+
+              1. Swapping two rows
+              2. Multiplying a row by a non-zero scalar
+              3. Adding to one row a multiple of another
+              
+              Implemetation Algorithm:
+              
+              Partial pivoting: Find the kth pivot by swapping rows, to move the entry with the largest absolute value to the
+              pivot position. This imparts computational stability to the algorithm.
+              
+              For each row below the pivot, calculate the factor f which makes the kth entry zero, and for every element in the
+              row subtract the fth multiple of the corresponding element in the kth row.
+              
+              And lastly repeat above steps for each unknown and we found the partial reference matrix.
+
+
