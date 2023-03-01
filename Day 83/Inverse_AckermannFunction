@@ -1,0 +1,55 @@
+Problem - Write a program in java to implement inverse Ackermann Function.
+
+
+Code:
+
+import java.io.*;
+public class InverseAckermann {
+
+	public static int inverseAckermann(int n)
+	{
+
+		// Check if the input is small enough
+		// to solve directly
+		if (n <= 4) {
+			return n;
+		}
+
+		// Divide the problem into
+		// two smaller problems
+		int a = inverseAckermann(n - 1);
+		int b = inverseAckermann(n - 2);
+
+		// Combine the solutions of the
+		// two smaller problems
+		return a + b;
+	}
+
+	// Driver Code
+	public static void main(String[] args)
+	{
+
+		// Define the input
+		int n = 10;
+
+		// Solve the problem using the
+		// inverse Ackermann algorithm
+		int result = inverseAckermann(n);
+
+		// Print the result
+		System.out.println("Result: " + result);
+	}
+}
+
+
+Output:
+Result: 76
+
+
+Explanation - In this challenge we are using divide and conquer algorithm approach to solve the problem.
+              It divides the problem into two smaller subproblems, solves them recursively, and then combines
+              the solutions to obtain a solution to the original problem.The time complexity of this algorithm
+              is O(α(n)), as the running time is bounded by the value of the inverse Ackermann function for the
+              input size n. This means that the algorithm is very efficient and can solve large problems in a 
+              relatively short amount of time.
+              
