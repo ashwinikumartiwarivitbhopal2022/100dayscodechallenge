@@ -1,0 +1,64 @@
+Problem - Write a code in java which has the number of items in each pile, determine who will win the game;
+          Player 1 or player 2. If player 1 starts the game and both plays optimally.
+          
+          
+Code:
+
+class Main{
+	
+	static int solve(int p[], int n)
+	{
+		
+		int G = 0;
+		for (int i = 0; i < n; i++) {
+	
+			if (p[i]%2!=0)
+				
+				G ^= (p[i] + 1);
+	
+			else 
+				G ^= (p[i] - 1);
+		}
+		
+		return G;
+	}
+	
+	public static void main (String[] args)
+	{
+		int n = 3;
+		int p[] = { 32, 49, 58 };
+		int res = solve(p, n);
+	
+		if (res == 0) // if G is zero
+			System.out.print("Player 2 wins");
+		else // if G is non zero
+			System.out.print("Player 1 wins");
+	}
+}
+
+Input:
+
+3 [18, 47, 34]
+3 [32, 49, 58]
+ 
+ 
+Output:
+ 
+Player 2 wins
+Player 1 wins
+
+
+Explanation - In this challenge we are implementing variation in Nim game problem by the following scenario:
+
+              Input : 3 [18, 47, 34]
+              Output : Player 2 wins
+              G = g(18)^g(47)^g(34) = (17)^(48)^(33) = 0
+              Grundy number(G), for this game is zero.
+              Player 2 wins.
+              
+              Input : 3 [32, 49, 58]
+              Output : Player 1 wins
+              G = g(31)^g(50)^g(57) = (17)^(48)^(33) = 20
+              Grundy number(G), for this game is non-zero.
+              Player 1 wins.
+              
