@@ -1,0 +1,58 @@
+Problem - Write a program in java given a string and then task is to sort the string according to the frequency
+          of character and return the final string.
+          
+Code:
+
+import java.util.Arrays;
+ 
+public class SortStringByFrequency {
+    public static void main(String[] args) {
+        String s = "tree";
+        int f[] = new int[s.length()];
+        char[] st = s.toCharArray();
+        for (int i = 0; i < st.length; i++) {
+            f[i] = countFrequency(st, st[i]);
+        }
+//        System.out.println(Arrays.toString(f));
+        System.out.println(sortArray(st, f));
+    }
+ 
+    public static int countFrequency(char[] a, char b) {
+        int count = 0;
+        for (char i : a){
+            if (i == b)
+                count++;
+        }
+        return count;
+    }
+ 
+    public static String sortArray(char[] a, int[] b) {
+        int t = 0;char c;
+        for (int i = 0; i < a.length - 1; i++) {
+            for (int j = 0;j < a.length - i - 1;j++) {
+                if (b[j] < b[j + 1]) {
+                    t = b[j];
+                    b[j] = b[j + 1];
+                    b[j + 1] = t;
+ 
+                    c = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = c;
+                }
+            }
+        }
+        System.out.println(Arrays.toString(b));
+        return Arrays.toString(a);
+    }
+}
+
+Input : "tree" 
+Output : "eetr"
+
+Input : "hello"
+Output : "lleho"
+
+Explanation - First, we will make the character array of the characters of the string.
+              Then count the frequency of each character in the string.
+              Taking the frequency as the main array sort the character array.
+              Then make the string of that char array.
