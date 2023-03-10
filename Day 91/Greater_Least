@@ -1,0 +1,109 @@
+Problem - Write a code in java in which given a number N, find the smallest number that has same set-of-digits as N and is greater than N.
+          If N is the greatest possible number with its set-of-digits, then print the same number N.
+          
+          
+Code:
+
+import java.util.*;
+import java.io.*;
+
+public class Main {
+  static void swap(long []arr, int i, int j)
+  {
+      long temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+  }
+
+  //sorting a subarray in increasing order
+  static void sortSubarray(long []number, int i, int j)
+  {
+      while (i < j)
+      {
+          swap(number, i, j);
+          i += 1;
+          j -= 1;
+      }
+  }
+
+  static void findNextGreaterNumber(long []arr, int n)
+  {
+      long lastDigitSeen = arr[n - 1];
+      int i, j;
+      for (i = n - 2; i >= 0; i--)
+      {
+          if (lastDigitSeen > arr[i])
+              break;
+          lastDigitSeen = arr[i];
+      }
+      if (i >= 0)
+      {
+          for (j = n - 1; j > i; j--)
+          {
+              if (arr[j] > arr[i])
+                  break;
+          }
+
+          swap(arr, i, j);
+          sortSubarray(arr, i + 1, n - 1);
+      }
+  }
+  public static void main(String args[]) throws IOException {
+
+    Scanner sc = new Scanner(System.in);
+    int t = sc.nextInt();
+    while (t != 0)
+    {
+      long n = sc.nextLong();
+      int count = 0;
+      long num = n;
+
+      //count the number of digits in n
+      while (num > 0)
+      {
+          num /= 10;
+          count++;
+      }
+
+      //storing all digits of n into an array
+      long arr[] = new long[count];
+      int i = count - 1;
+      while (n > 0)
+      {
+          arr[i--] = n % 10;
+          n /= 10;
+      }
+
+      findNextGreaterNumber(arr, count);
+
+      //printing all digits of the resultant number
+      for (int j = 0; j < count; j++)
+          System.out.print(arr[j]);
+      System.out.println();
+      t--;
+    }
+
+  }
+}
+
+Input  : "12345"
+Output : "12354"
+
+Input  : "54321"
+Output : "54321"
+
+Input  : "12321"
+Output : "13122"
+
+
+Explanation - In this challenge we start traversing the given number from rightmost digit till you reach a digit that is just smaller than
+              its right digit, say index of this digit be i.Like - N = 125321, here if we scan from right to left, 2 is the first digit that
+              is less than 5 so 2 is our ith index digit.
+              
+              Now again traverse to the right of this index i and find the smallest digit that is just greater than the digit at ith index.
+              Let’s say the found index is j at the right of i. Now if we traverse right of 2, the smallest digit that is greater than 2 is 3.
+              
+              Swap digits at ith and jth index. After swapping 125321 becomes 135221.
+              
+              Sort digits from (i+1) to the rightmost index in increasing order. After sorting, 135221 becomes 131225, which is our required solution.
+              
