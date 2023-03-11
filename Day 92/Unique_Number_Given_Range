@@ -1,0 +1,97 @@
+Problem - Write a code in java which takes input as range of numbers and find  unique numbers(non-repeating numbers)in
+          the given range and also count the unique numbers.
+          
+          
+Code:
+import java.util.Scanner;
+
+public class unique {
+	static boolean fun(String str) {
+		for(int i=0;i<str.length()-1;i++) {
+			char ch=str.charAt(i);
+			for(int j=i+1;j<str.length();j++) {
+				if(ch ==str.charAt(j)) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	public static void main (String args[]) {
+		Scanner s =new Scanner(System.in);
+		int n=s.nextInt();
+		int m=s.nextInt();
+		int c=0;
+		while(n<=m) {
+			String num1 =String.valueOf(n);
+			boolean b=fun(num1);
+			if(b) {
+				System.out.println(num1);
+				c++;
+			}
+			else {
+				System.out.println(num1+"repeating value");
+			}
+			n++;
+		}
+		
+	System.out.println("Unique number"+c);
+	s.close();
+	}
+
+}
+
+Input - 10
+        15
+        
+Output - 10
+         11repeating value
+         12
+         13
+         14
+         15
+         Unique number5
+         
+         
+Input - 1
+        30
+        
+Output - 1
+         2
+         3
+         4
+         5
+         6
+         7
+         8
+         9
+         10
+         11repeating value
+         12
+         13
+         14
+         15
+         16
+         17
+         18
+         19
+         20
+         21
+         22repeating value
+         23
+         24
+         25
+         26
+         27
+         28
+         29
+         30
+         Unique number28
+         
+         
+Explanation - In this challenge we are taking range of numbers and finding in  each number whether it has repeating digits or not.
+              The number will be unique if it is positive integer and there are no repeated digits in the number. In other words, 
+              a number is said to be unique if and only if the digits are not duplicate. For example, 20, 56, 9863, 145, etc. are
+              the unique numbers while 33, 121, 900, 1010, etc. are not unique numbers.
+              
+              
