@@ -1,0 +1,68 @@
+Problem - Write a program in java which takes string as input and shows the given parentheses is balanced or not.
+
+
+Code:
+ public class parenthesis{
+   public static boolean isBalanced(String s)
+{
+	
+	boolean flag = true;
+	int count = 0;
+	
+	for(int i = 0; i < s.length(); i++)
+	{
+		if (s.charAt(i) == '(')
+		{
+			count++;
+		}
+		else
+		{
+			count--;
+		}
+		if (count < 0)
+		{
+			flag = false;
+			break;
+		}
+	}
+	
+	if (count != 0)
+	{
+		flag = false;
+	}
+	return flag;
+}
+
+
+public static void main(String[] args)
+{
+	String s1 = "((()))()({)";
+	
+	if (isBalanced(s1))
+		System.out.println("Balanced");
+	else
+		System.out.println("Not Balanced");
+	
+	String s2 = "()((()))";
+	
+	if (isBalanced(s2))
+		System.out.println("Balanced");
+	else
+		System.out.println("Not Balanced");
+}
+}
+
+
+Input:
+((()))()({)
+()((()))
+
+Output:
+Not Balanced
+Balanced
+
+
+Explanation - In this challenge we are taking different symbols in the form of string and checking wehether it is balanced or not.
+              A collection of parentheses is considered to be a matched pair if the opening bracket occurs to the left of the
+              corresponding closing bracket respectively.If the brackets enclosed in a string are not matched, bracket pairs are
+              not balanced.
