@@ -1,0 +1,47 @@
+Problem - Write a code in java which takes string as input and compare the last element is same or not.
+          If same print 'Yes' otherwise 'No'.
+          
+          
+Code:
+
+import java.io.*;
+      import java.util.*;
+
+   public class Main {
+
+      public static void main(String[] args) {
+
+        //Scanner sc=new Scanner(System.in);
+          String A="Hi This is AH";
+          /* Enter your code here. Print output to STDOUT. */
+          char firstCharacter = A.charAt(0);
+        char lastCharacter = A.charAt(A.length() - 1);
+
+        if (firstCharacter == lastCharacter) {
+          System.out.println("Yes");
+    }  else {
+        System.out.println("No");
+    }
+    }
+}
+
+Input1:
+Hi This is AH
+
+Output1:
+Yes
+
+Input2:
+Hi This is AK
+
+Output:
+No
+
+
+Explanation - In this challenge we are taking a string and comparing the first and the element of the string is equal or not.
+              The idea is to use charAt() method of String class to find the first and last character in a string. 
+              The charAt() method accepts a parameter as an index of the character to be returned.
+              The first character in a string is present at index zero and the last character in a string is present at index 
+              length of string-1
+              
+              
