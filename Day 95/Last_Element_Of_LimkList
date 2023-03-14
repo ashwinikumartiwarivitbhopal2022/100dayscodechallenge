@@ -1,0 +1,75 @@
+Problem - Write a program in java to take input in a link list and print the desired  element from the last of the link list.
+
+
+Code:
+
+
+import java.io.*;
+ public class LinkedList {
+	Node head;
+	class Node {
+		int data;
+		Node next;
+		Node(int d)
+		{
+			data = d;
+			next = null;
+		}
+	}
+	void printNthFromLast(int N)
+	{
+		int len = 0;
+		Node temp = head;
+		while (temp != null) {
+			temp = temp.next;
+			len++;
+		}
+		if (len < N)
+			return;
+
+		temp = head;
+		for (int i = 1; i < len - N + 1; i++)
+			temp = temp.next;
+
+		System.out.println(temp.data);
+	}
+	public void push(int new_data)
+	{
+		Node new_node = new Node(new_data);
+		new_node.next = head;
+		head = new_node;
+	}
+	public static void main(String[] args)
+	{
+		LinkedList llist = new LinkedList();
+		llist.push(10);
+		llist.push(8);
+		llist.push(6);
+		llist.push(4);
+		llist.printNthFromLast(1);
+	}
+} 
+
+
+Input:
+4 6 8 10 
+
+Output:
+10
+
+Input:
+4 6 8 10
+Print From Last (2)
+
+Output:
+8
+
+
+
+Explanation - In this challenge we are taking a link list and printing the desired last element from the link list
+               A linked list is a linear data structure, in which the elements are not stored at contiguous memory
+               locations. The given task is to retrieve the desired element  from the last of the given linked list.
+               
+               Like we are taking 1 st element from the last it is printing 10 and in second input we are taking 2nd 
+               from the the last it is printing 8.
+               
