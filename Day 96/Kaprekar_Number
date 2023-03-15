@@ -1,0 +1,53 @@
+Problem - Write a code in java to implement Kaprekar algorithm upto given number.
+
+
+Code:
+
+public class Karperakr {
+	
+		static boolean iskaprekar(int n)
+		{
+			if (n == 1)
+			return true;
+		
+			int sq_n = n * n;
+			int count_digits = 0;
+			while (sq_n != 0)
+			{
+				count_digits++;
+				sq_n /= 10;
+			}
+		
+			sq_n = n*n;
+		
+			for (int r_digits=1; r_digits<count_digits; r_digits++)
+			{
+				int eq_parts = (int) Math.pow(10, r_digits);
+		
+				if (eq_parts == n)
+					continue;
+		
+				int sum = sq_n/eq_parts + sq_n % eq_parts;
+				if (sum == n)
+				return true;
+			}
+      
+      
+
+Input :  n = 45  
+Output : Yes
+Explanation : 452 = 2025 and 20 + 25 is 45
+
+Input : n = 13
+Output : No
+Explanation : 132 = 169. Neither 16 + 9 nor 1 + 69 is equal to 13
+
+Input  : n = 297  
+Output : Yes
+Explanation:  2972 = 88209 and 88 + 209 is 297
+
+Input  : n = 10 
+Output : No
+Explanation:  102 = 100. It is not a Kaprekar number even if
+sum of 100 + 0 is 100. This is because of the condition that 
+none of the parts should have value 0.
