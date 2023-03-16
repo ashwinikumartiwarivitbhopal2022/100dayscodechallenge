@@ -1,0 +1,133 @@
+Problem - Write a program in java to implement stack operations like push,pop etc.
+
+
+Code:
+package myproject;
+
+class Stack {
+
+static class Node {
+	int data;
+	Node prev;
+	Node next;
+};
+
+static Node start = null;
+static Node top = null;
+
+public static boolean isEmpty() {
+	if (start == null)
+	return true;
+	return false;
+}
+
+public static void push(int d) {
+	Node n;
+	n = new Node();
+	n.data = d;
+	if (isEmpty()) {
+	n.prev = null;
+	n.next = null;
+
+	start = n;
+	top = n;
+	} else {
+	top.next = n;
+	n.next = null;
+	n.prev = top;
+	top = n;
+	}
+}
+
+public static void pop() {
+	Node n;
+	n = top;
+	if (isEmpty())
+	System.out.println("Stack is empty");
+	else if (top == start) {
+	top = null;
+	start = null;
+	n = null;
+	} else {
+	top.prev.next = null;
+	top = n.prev;
+	n = null;
+	}
+}
+
+public static void topelement() {
+	if (isEmpty())
+	System.out.println("Stack is empty");
+	else
+	System.out.println("The element at top of the stack is : " + top.data);
+}
+
+public static void stacksize() {
+	int c = 0;
+	if (isEmpty())
+	System.out.println("Stack is empty");
+	else {
+	Node ptr = start;
+	while (ptr != null) {
+		c++;
+		ptr = ptr.next;
+	}
+	}
+	System.out.println("Size of the stack is : " + c);
+}
+
+public static void printstack() {
+	if (isEmpty())
+	System.out.println("Stack is empty");
+	else {
+	Node ptr = start;
+	System.out.print("Stack is : ");
+	while (ptr != null) {
+		System.out.print(ptr.data + " ");
+		ptr = ptr.next;
+	}
+	System.out.println("");
+	}
+}
+
+public static void main(String args[]) {
+	push(2);
+	push(5);
+	push(10);
+	printstack();
+	topelement();
+	stacksize();
+	pop();
+	System.out.println("\nElement popped from the stack ");
+	topelement();
+	pop();
+	System.out.print("\nElement popped from the stack \n");
+	stacksize();
+}
+}
+
+
+
+Output:
+
+Stack is : 2 5 10 
+The element at top of the stack is : 10
+Size of the stack is : 3
+
+Element popped from the stack 
+The element at top of the stack is : 5
+
+Element popped from the stack 
+Size of the stack is : 1
+
+
+
+Explanation - In this challenge we are doing different stack operations, at first we are checking whether the  top of stack is null
+              or not.
+              If the top is null if returns stack is empty.
+             
+              Now,we start pushing the desired elements into the stack .
+              
+              Then , we pop the elements that we were inserted and returns the popped and the top element.
+              
+              At last we check the size of the element.
