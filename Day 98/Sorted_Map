@@ -1,0 +1,45 @@
+Problem - Write a java program to implement sorted map.
+
+
+Code:
+
+import java.util.SortedMap;
+import java.util.TreeMap;
+ 
+public class Main {
+    public static void main(String[] args) {
+        SortedMap<String, Integer> sortedMap = new TreeMap<>();
+ 
+        // Adding elements to the sorted map
+        sortedMap.put("A", 1);
+        sortedMap.put("C", 3);
+        sortedMap.put("B", 2);
+ 
+        // Getting values from the sorted map
+        int valueA = sortedMap.get("A");
+        System.out.println("Value of A: " + valueA);
+ 
+        // Removing elements from the sorted map
+        sortedMap.remove("B");
+ 
+        // Iterating over the elements of the sorted map
+        for (String key : sortedMap.keySet()) {
+            System.out.println("Key: " + key + ", Value: " + sortedMap.get(key));
+        }
+    }
+}
+
+Output:
+
+Value of A: 1
+Key: A, Value: 1
+Key: C, Value: 3
+
+
+
+Explanation - In this challenge we are solving sorted map.The main characteristic of a SortedMap is that it orders the keys by 
+              their natural ordering, or by a specified comparator. So consider using a TreeMap when you want a map that satisfies 
+              the following criteria: 
+
+              Null key or null value is not permitted.
+              The keys are sorted either by natural ordering or by a specified comparator.
