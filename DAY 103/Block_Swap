@@ -1,0 +1,91 @@
+Problem - Write a program in java which has a function  that rotate(arr[], d, n) and rotates arr[] of size n by d elements.
+
+
+Code:
+package myproject;
+
+import java.util.*;
+
+class BlockSwap
+{
+	public static void leftRotate(int arr[], int d,
+												int n)
+	{
+		leftRotateRec(arr, 0, d, n);
+	}
+
+	public static void leftRotateRec(int arr[], int i,
+								int d, int n)
+	{
+		if(d == 0 || d == n)
+			return;
+		if(n - d == d)
+		{
+			swap(arr, i, n - d + i, d);
+			return;
+		}
+		
+		if(d < n - d)
+		{
+			swap(arr, i, n - d + i, d);
+			leftRotateRec(arr, i, d, n - d);	
+		}
+		else 
+		{
+			swap(arr, i, d, n - d);
+			leftRotateRec(arr, n - d + i, 2 * d - n, d); 
+		}
+	}
+
+public static void printArray(int arr[], int size)
+{
+	int i;
+	for(i = 0; i < size; i++)
+		System.out.print(arr[i] + " ");
+	System.out.println();
+}
+
+public static void swap(int arr[], int fi,
+						int si, int d)
+{
+	int i, temp;
+	for(i = 0; i < d; i++)
+	{
+		temp = arr[fi + i];
+		arr[fi + i] = arr[si + i];
+		arr[si + i] = temp;
+	}
+}
+
+
+public static void main (String[] args)
+{
+	int arr[] = {1, 2, 3, 4, 5, 6, 7};
+	leftRotate(arr, 2, 7);
+	printArray(arr, 7);	
+}
+}
+
+Input:
+{1, 2, 3, 4, 5, 6, 7}
+
+
+Output:
+3 4 5 6 7 1 2
+
+
+
+Explanation - In this challenge we are implementing Block Swap algorithm by taking an array of size 7.
+              Initialize A = arr[0..d-1] and B = arr[d..n-1]
+              Do following until size of A is equal to size of B
+
+              If A is shorter, divide B into Bl and Br such that Br is of same 
+              length as A. Swap A and Br to change ABlBr into BrBlA. Now A
+              is at its final place, so recur on pieces of B.  
+
+              If A is longer, divide A into Al and Ar such that Al is of same 
+              length as B Swap Al and B to change AlArB into BArAl. Now B
+              is at its final place, so recur on pieces of A.
+
+              Finally when A and B are of equal size, block swap them.
+              
