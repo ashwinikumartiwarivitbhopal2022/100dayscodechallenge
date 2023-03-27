@@ -1,0 +1,108 @@
+Problem - Write a program in java which takes input as a  set of n integers where n <= 40. Each of them is at
+          most 1012, determine the maximum sum subset having sum less than or equal S where S <= 1018.
+          
+          
+Code:
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class Main{
+	
+static long X[] = new long[2000005];
+static long Y[] = new long[2000005];
+
+static void calcsubarray(long a[],long x[],
+						int n, int c)
+{
+	for(int i = 0; i < (1 << n); i++)
+	{
+		long s = 0;
+		for(int j = 0; j < n; j++)
+			if ((i & (1 << j)) == 1)
+				s += a[j + c];
+				
+		x[i] = s;
+	}
+}
+static long solveSubsetSum(long a[], int n, long S)
+{
+	calcsubarray(a, X, n / 2, 0);
+	calcsubarray(a, Y, n - n / 2, n / 2);
+	
+	int size_X = 1 << (n / 2);
+	int size_Y = 1 << (n - n / 2);
+	
+	Arrays.sort(Y);
+	long max = 0;
+	for(int i = 0; i < size_X; i++)
+	{
+		if (X[i] <= S)
+		{
+			int p = lower_bound(Y, S - X[i]);
+			if (p == size_Y || Y[p] != (S - X[i]))
+				p--;
+	
+			if ((Y[p] + X[i]) > max)
+				max = Y[p] + X[i];
+		}
+	}
+	return max;
+}
+
+ static int lower_bound(long a[], long x)
+{
+	int l = -1, r = a.length;
+	while (l + 1 < r)
+	{
+		int m = (l + r) >>> 1;
+		if (a[m] >= x)
+			r = m;
+		else
+			l = m;
+	}
+	return r;
+}
+public static void main (String[] args)
+{
+	long a[] = { 3, 34, 4, 12, 5, 2 };
+	int n = a.length;
+	long S = 10;
+	System.out.println("Largest value smaller " +
+					"than or equal to given " +
+					"sum is " +
+					solveSubsetSum(a, n, S));
+}
+}
+
+
+
+
+Input  : set[] = {45, 34, 4, 12, 5, 2} and S = 42
+Output : 41
+Maximum possible subset sum is 41 which can be 
+obtained by summing 34, 5 and 2.
+
+
+Input  : Set[] = {3, 34, 4, 12, 5, 2} and S = 10
+Output : 10
+Maximum possible subset sum is 10 which can be 
+obtained by summing 2, 3 and 5.
+
+
+
+Explanation - In this  we are applying a Brute Force approach to solve this challenge.It would be find, all possible subset sums
+              of N integers and check if it is less than or equal S and keep track of such a subset with maximum sum.
+              
+              Split the set of integers into 2 subsets say A and B. A having first n/2 integers and B having rest.
+              
+              Find all possible subset sums of integers in set A and store in an array X. Similarly calculate all possible subset
+              sums of integers in set B and store in array Y. Hence, Size of each of the array X and Y will be at most 2n/2.
+              
+              Now merge these 2 subproblems. Find combinations from array X and Y such that their sum is less than or equal to S. 
+              
+              To make it less complex, first sort array Y and then iterate over each element of X and for each element x in X use
+              binary search to find maximum element y in Y such that x + y <= S.
+              
+              Thus our final running time is O(2n/2n).
+              
