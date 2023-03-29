@@ -1,0 +1,72 @@
+Problem - Write a program in java which takes input of two strings and print the total number of unique subsstring by comparing both strings.
+
+
+Code:
+import java.util.*;
+
+class SumOfWs{
+
+static int distinctSubString(String P, String Q,int K, int N)
+//For size make String to int or vice versa.
+{
+	HashSet<String> S = new HashSet<>();
+	for (int i = 0; i < N; ++i) {
+
+		int sum = 0;
+		String s = "";
+
+		for (int j = i; j < N; ++j) {
+         int pos = P.charAt(j) - 'a';
+			sum += Q.charAt(pos) - '0';
+			s += P.charAt(j);
+
+			if (sum <= K) {
+				S.add(s);				
+			}
+			else {
+				break;
+			}
+		}
+	}
+	//return S.toString();
+	return S.size();
+  //For unique string comment line 32 and un comment 31.
+}
+
+public static void main(String[] args)
+{
+	String P = "vellore";
+	String Q = "10231548641135486465417801";
+	int K = 6;
+	int N = P.length();
+	System.out.println(distinctSubString(P, Q, K, N));
+}
+}
+
+
+Input:
+vellore
+10231548641135486465417801
+
+
+Output:
+14 (No. of unique string)
+
+
+Input:
+vellore
+10231548641135486465417801
+
+
+Output:
+[ll, lo, ell, e, el, l, llo, ve, o, r, re, v, vell, vel]
+(Unique string)
+
+
+
+Explanation - In this challenge we are count all sub-strings with weight of characters atmost K.The idea is to use an unordered set to store the unique values.
+              Iterate over all the substrings using the nested loops and maintain the sum of the weight of all the characters encountered so far.
+              If the sum of characters is not greater than K, then insert it in a hashmap.
+              Finally, output the size of the hashmap.
+              
+              
