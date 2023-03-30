@@ -1,0 +1,82 @@
+Problem - Write a code in java  which takes array as input and print its reduced form.
+
+
+Code:
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static int[] convert(int[] arr)
+	{
+		int n = arr.length;
+		int[] result = new int[n];
+		int currPos = 0;
+		for (int i = 0; i < n; i++) {
+			int minn = Integer.MAX_VALUE;
+			int idx = -1;
+
+			for (int j = 0; j < n; j++) {
+				if (minn > arr[j]) {
+					minn = arr[j];
+					idx = j;
+				}
+			}
+
+			result[idx] = currPos;
+			currPos++;
+
+			arr[idx] = Integer.MAX_VALUE;
+		}
+
+		return result;
+	}
+
+	static void printArr(int[] arr)
+	{
+		for (int i : arr) {
+			System.out.print(i + " ");
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		int[] arr = { 10, 20, 15, 12, 11, 50 };
+		int n = arr.length;
+
+		System.out.println("Given Array is");
+		printArr(arr);
+
+		int[] result = convert(arr);
+
+		System.out.println("\n\nConverted Array is");
+		printArr(result);
+	}
+}
+
+
+Input:
+Given Array is 
+10 20 15 12 11 50 
+
+Output:
+Converted Array is 
+0 4 3 2 1 5 
+
+
+
+Explanation - In this challenge we are taking an array as input and simply printing its reduced form. We  have given an array with N distinct
+              elements.We are converting the given array to a form where all elements are in the range from 0 to N-1. The order of elements is
+              the same, i.e., 0 is placed in the place of the smallest element, 1 is placed for the second smallest element, … N-1 is placed 
+              for the largest element.
+              
+              
+              Now,(Steps Taken)
+              
+              1.Iterate over the array
+              2.Find the minimum element and keep its position of occurrence.
+              3.Update the result at the minimum index element with the new Position
+              4.Increment the new position by 1.
+              5.Update the original element at the current minimum element with the maximum
+                value possible, so that it won’t be minimum in a further iteration
+              6.Return the result
+
