@@ -1,0 +1,71 @@
+Problem - Write a program in java which find two lines, which together with x-axis forms a container, such that the
+          container contains the most water.
+          
+          
+Code:
+
+import java.io.*;
+
+class Main{
+
+public static int maxArea(int[] a)
+{
+
+	int Area = 0;
+	
+	for(int i = 0; i < a.length; i++)
+	{
+		for(int j = i + 1; j < a.length; j++)
+		{
+			Area = Math.max(
+				Area, Math.min(a[i], a[j]) *
+							(j - i));
+		}
+	}
+	return Area;
+}
+
+
+public static void main(String[] args)
+{
+	int a[] = { 1, 5, 4, 3 };
+	int b[] = { 3, 1, 2, 4, 5 };
+
+	System.out.println(maxArea(a));
+	System.out.println(maxArea(b));
+}
+}
+
+
+Input0: array = [1, 5, 4, 3]
+Output0: 6
+
+Explanation : 
+5 and 3 are distance 2 apart. 
+So the size of the base = 2. 
+Height of container = min(5, 3) = 3. 
+So total area = 3 * 2 = 6
+
+
+Input1: array = [3, 1, 2, 4, 5]
+Output1: 12
+
+Explanation : 
+5 and 3 are distance 4 apart. 
+So the size of the base = 4. 
+Height of container = min(5, 3) = 3. 
+So total area = 4 * 3 = 12
+
+
+
+Explanation - In this challenge at first  we are creating a nested loop and the outer loop traverses the array from 0 to end.
+
+              Then,the inner loop traverses the array from i + 1 to end.
+              
+              In next we are finding the water that can be contained in the container with height of boundaries as array[i] and
+              array[j],area = (j – i)* min(array[i],array[j]), if this area is greater than current maximum, update the current 
+              maximum.
+              
+              At last print the current maximum.
+              
+              
