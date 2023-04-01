@@ -1,0 +1,58 @@
+Problem - Write a program in java to convert vector to array.
+
+
+Code:
+
+import java.util.*;
+
+public class Main {
+
+	public static <T>
+		Object[] convertVectorToArray(Vector<T> vector)
+	{
+		Object[] array = vector.toArray();
+		return array;
+	}
+	public static void main(String args[])
+	{
+		Vector<String> vector = new Vector<String>();
+
+		vector.add("1");
+		vector.add("2");
+		vector.add("3");
+		vector.add("4");
+		vector.add("5");
+
+		System.out.println("Vector: " + vector);
+    Object[] objArray = convertVectorToArray(vector);
+		String[] array = Arrays.copyOf(
+			objArray, objArray.length, String[].class);
+
+		System.out.println("Array: "
+						+ Arrays.toString(array));
+	}
+}
+
+
+Input : Vector: [1, 2, 3, 4, 5]
+
+Output: Array: [1, 2, 3, 4, 5]
+
+
+Explanation - In this challenge we are coverting vector to array by  two methods first by using toArray() method of Vector class
+               and second by using toArray(new String[vector.size()]).
+               
+               In,
+               Method 1: Using toArray() method of Vector class
+
+               Get the Vector.
+               Convert the Vector to Object array using toArray() method
+               Convert the Object array to desired type array using Arrays.copyOf() method
+               Return,print the Array.
+               
+               
+               Method 2: Using toArray(new String[vector.size()]) method  
+
+               Create a Vector String type.
+               Add elements into Vector using add(E) method.
+               Convert the Vector to Array using toArray(new String[vector.size()]).
