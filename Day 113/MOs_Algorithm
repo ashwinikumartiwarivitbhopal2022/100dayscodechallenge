@@ -1,0 +1,73 @@
+Problem - Write a program in Java to implement MOs algorithm or Query Square Root Decomposition algorithm.
+
+
+Code:
+
+import java.util.*;
+
+class Query{
+	int L;
+	int R;
+	Query(int L, int R){
+		this.L = L;
+		this.R = R;
+	}
+}
+
+class Main
+{
+
+	static void printQuerySums(int a[], int n, ArrayList<Query> q, int m)
+	{
+
+		for (int i=0; i<m; i++)
+		{
+			int L = q.get(i).L, R = q.get(i).R;
+
+			int sum = 0;
+			for (int j=L; j<=R; j++)
+				sum += a[j];
+
+			System.out.println("Sum of [" + L +
+						", " + R + "] is " + sum);
+		}
+	}
+
+	public static void main(String argv[])
+	{
+		int a[] = {1, 1, 2, 1, 3, 4, 5, 2, 8};
+		int n = a.length;
+		
+		ArrayList<Query> q = new ArrayList<Query>();
+		q.add(new Query(0,4));
+		q.add(new Query(1,3));
+		q.add(new Query(2,4));
+		
+		int m = q.size();
+		printQuerySums(a, n, q, m);
+	}
+}
+
+
+Input:  arr[]   = {1, 1, 2, 1, 3, 4, 5, 2, 8};
+        query[] = [0, 4], [1, 3] [2, 4]
+        
+        
+Output: Sum of arr[] elements in range [0, 4] is 8
+        Sum of arr[] elements in range [1, 3] is 4  
+        Sum of arr[] elements in range [2, 4] is 6
+        
+        
+Explanation - In this challenge we have  an array and a set of query ranges, we have to find the sum of every query range.
+              
+              At first sort all queries in a way that queries with L values from 0 to √n – 1 are put together, then all queries
+              from √n to 2*√n – 1, and so on. All queries within a block are sorted in increasing order of R values.
+              
+              Then,process all queries one by one in a way that every query uses sum computed in the previous query.
+              Let ‘sum’ be sum of previous query.
+              Remove extra elements of previous query. For example if previous query is [0, 8] and current query is
+              [3, 9], then subtract a[0],a[1] and a[2] from sum.
+              Add new elements of current query.
+              
+              Lastly,the output of above program doesn’t print results of queries in same order as input, because queries are sorted.
+
