@@ -1,0 +1,58 @@
+Problem - Write a program in java to implement Manacher algorithm  which is used to find largest palindromic substring in a given string efficiently.
+
+
+Code:
+package myproject;
+
+ public class Lps{
+
+ public static void printSubStr(String str, int low, int high)
+{
+	for (int i = low; i <= high; ++i)
+		System.out.print(str.charAt(i));
+}
+static int longestPalSubstr(String str)
+{
+	//int n = str.length();
+	int maxLength = 1, start = 0;
+	for (int i = 0; i < str.length(); i++) {
+		for (int j = i; j < str.length(); j++) {
+			int flag = 1;
+
+			for (int k = 0; k < (j - i + 1) / 2; k++)
+				if (str.charAt(i + k) != str.charAt(j - k))
+					flag = 0;
+
+			if (flag!=0 && (j - i + 1) > maxLength) {
+				start = i;
+				maxLength = j - i + 1;
+			}
+		}
+	}
+	System.out.print("Longest palindrome subString is: ");
+	printSubStr(str, start, start + maxLength - 1);
+	return maxLength;
+}
+public static void main(String[] args)
+{
+	String str = "abbc";
+	System.out.print("\nLength is: "
+		+ longestPalSubstr(str));
+  }
+}
+
+
+Input:
+abbc
+
+
+Output:
+Longest palindrome subString is: bb
+Length is: 2
+
+
+Explanation - In this challenge we are taking a string  and we just have to use two loops for finding all the substrings 
+             and then one more for checking whether the substring is a palindrome or not. Hence total time complexity of
+             this approach will be N^3.
+             
+             
