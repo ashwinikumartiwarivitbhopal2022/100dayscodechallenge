@@ -1,0 +1,50 @@
+Problem - Write a program in java in which given an array of integers of size ‘n’, Our aim is to calculate the
+          maximum sum of ‘k’ consecutive elements in the array.
+          
+          
+Code:
+
+class Main {
+
+	static int maxSum(int arr[], int n, int k)
+	{
+
+		int max_sum = Integer.MIN_VALUE;
+
+		for (int i = 0; i < n - k + 1; i++) {
+			int current_sum = 0;
+			for (int j = 0; j < k; j++)
+				current_sum = current_sum + arr[i + j];
+
+			max_sum = Math.max(current_sum, max_sum);
+		}
+
+		return max_sum;
+	}
+
+	public static void main(String[] args)
+	{
+		int arr[] = { 1, 4, 2, 10, 2, 3, 1, 0, 20 };
+		int k = 4;
+		int n = arr.length;
+		System.out.println(maxSum(arr, n, k));
+	}
+}
+
+
+Input:
+{ 1, 4, 2, 10, 2, 3, 1, 0, 20 }
+
+
+Output:
+24
+
+
+Explanation - The use of the Sliding Window technique can be done in a very specific scenario, where the size of the window for computation is 
+              fixed throughout the complete nested loop. Only then the time complexity can be reduced. 
+              
+              At first,we find the size of the window required 
+              Then compute the result for 1st window, i.e. from the start of the data structure
+              Then use a loop to slide the window by 1, and keep computing the result window by window.
+              
+              
