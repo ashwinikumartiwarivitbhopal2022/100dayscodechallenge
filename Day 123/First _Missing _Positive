@@ -1,0 +1,48 @@
+Problem - Write a program in java in which given an unsorted integer array nums, return the smallest missing positive integer.
+
+Code:
+class Solution {
+    public int firstMissingPositive(int[] nums) {
+        
+        int ans[] = new int[nums.length + 1];
+
+        // mark the presence of each positive integer in the input array
+        for(int i = 0; i < nums.length; i++){
+            int val = nums[i];
+            if(val > 0 && val <= nums.length) { // check to avoid index out of bounds
+                ans[val] = 1;
+            }
+        }
+
+        // find the smallest missing positive integer by checking the array of marked integers
+        for(int i = 1; i < ans.length; i++){
+            if(ans[i] == 0){
+                return i;
+            }
+        }
+
+        // if no missing positive integer is found, return the length of the array
+    return ans.length;
+    }
+}
+
+
+Example 1:
+
+Input: nums = [1,2,0]
+Output: 3
+Explanation: The numbers in the range [1,2] are all in the array.
+
+
+Example 2:
+
+Input: nums = [3,4,-1,1]
+Output: 2
+Explanation: 1 is in the array but 2 is missing.
+
+
+Example 3:
+
+Input: nums = [7,8,9,11,12]
+Output: 1
+Explanation: The smallest positive integer 1 is missing.
