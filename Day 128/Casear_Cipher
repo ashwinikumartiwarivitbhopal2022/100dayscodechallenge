@@ -1,0 +1,81 @@
+Problem - Write a program in java to implement The Caesar cipher is a type of substitution cipher in which each alphabet in the plaintext
+          or messages is shifted by a number of places down the alphabet.
+          
+          
+Code:
+package myproject;  
+import java.util.Scanner;   
+   
+public class Casear  
+{    
+ public static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";   
+      
+ public static String encryptData(String inputStr, int shiftKey)   
+ {      
+     inputStr = inputStr.toLowerCase();     
+     String encryptStr = "";     
+     for (int i = 0; i < inputStr.length(); i++)   
+     {      
+         int pos = ALPHABET.indexOf(inputStr.charAt(i));   
+              
+         int encryptPos = (shiftKey + pos) % 26;   
+         char encryptChar = ALPHABET.charAt(encryptPos);     
+         encryptStr += encryptChar;   
+     }     
+     return encryptStr;   
+ }   
+     
+ public static String decryptData(String inputStr, int shiftKey)   
+ {      
+     inputStr = inputStr.toLowerCase();   
+          
+     String decryptStr = "";   
+          
+     for (int i = 0; i < inputStr.length(); i++)   
+     {     
+         int pos = ALPHABET.indexOf(inputStr.charAt(i));      
+         int decryptPos = (pos - shiftKey) % 26;      
+         if (decryptPos < 0){   
+             decryptPos = ALPHABET.length() + decryptPos;   
+         }   
+         char decryptChar = ALPHABET.charAt(decryptPos);     
+         decryptStr += decryptChar;   
+     }      
+     return decryptStr;   
+ }     
+ public static void main(String[] args)   
+ {      
+     Scanner sc = new Scanner(System.in);      
+     System.out.println("Enter a string for encryption using Caesar Cipher: ");   
+     String inputStr = sc.nextLine();   
+       
+     System.out.println("Enter the value by which each character in the plaintext message gets shifted: ");   
+     int shiftKey = Integer.valueOf(sc.nextLine());   
+       
+     System.out.println("Encrypted Data ===> "+encryptData(inputStr, shiftKey));   
+     System.out.println("Decrypted Data ===> "+decryptData(encryptData(inputStr, shiftKey), shiftKey));   
+  
+     sc.close();   
+ }   
+}   
+
+
+Input:
+Enter a string for encryption using Caesar Cipher: 
+All the best
+
+Enter the value by which each character in the plaintext message gets shifted: 
+1
+
+
+Output:
+Encrypted Data ===> bmmauifacftu
+Decrypted Data ===> allzthezbest
+
+
+Explanation - In this challenge to pass an encrypted message from one person to another, it is first necessary that both parties have the
+              ‘Key’ for the cipher, so that the sender may encrypt and the receiver may decrypt it.Key is the number of OFFSET to shift the 
+              cipher alphabet. Key can have basic shifts from 1 to 25 positions as there are 26 total alphabets.As we are designing custom
+              Caesar Cipher, in addition to alphabets, we are considering numeric digits from 0 to 9. Digits can also be shifted by key places.
+              
+              
