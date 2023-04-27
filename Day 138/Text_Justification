@@ -1,0 +1,112 @@
+Problem - Write a program in java in which given an array of strings words and a width maxWidth, format the text such that each line
+          has exactly maxWidth characters and is fully (left and right) justified.You should pack your words in a greedy approach;
+          that is, pack as many words as you can in each line. Pad extra spaces ' ' when necessary so that each line has exactly
+          maxWidth characters.Extra spaces between words should be distributed as evenly as possible. If the number of spaces on a 
+          line does not divide evenly between words, the empty slots on the left will be assigned more spaces than the slots on the
+          right.For the last line of text, it should be left-justified, and no extra space is inserted between words.
+          
+          
+
+Code:
+class Solution {
+    public List<String> fullJustify(String[] words, int maxWidth) {
+        if (words == null || words.length == 0 || maxWidth <= 0) {
+            return new ArrayList<String>();
+        }
+
+        List<String> result = new ArrayList<String>();
+        List<String> row = new ArrayList<String>();
+        int index = 0, len = 0;
+        while (index < words.length) {
+            String word = words[index];
+            if ((row.size() == 0 && len + word.length() > maxWidth) 
+                || (row.size() > 0 && len + word.length() + 1 > maxWidth)) {
+                result.add(formatHelper(row, len, maxWidth, false));
+                row = new ArrayList<String>();
+                len = 0;
+            } else {
+                row.add(word);
+                if (len == 0) {
+                    len += word.length();
+                } else {
+                    len += (word.length() + 1);
+                }
+                index++;
+            }
+        }
+        if (!row.isEmpty()) {
+            result.add(formatHelper(row, len, maxWidth, true));
+        }
+        return result;
+    }
+
+    private String formatHelper(List<String> row, int len, int maxWidth, boolean isLastRow) {
+        StringBuilder result = new StringBuilder();
+        int diff = maxWidth - len;
+        int interLen = (row.size() > 1) ? (diff / (row.size() - 1)) : diff;
+        StringBuilder interString = new StringBuilder();
+        for (int i = 0; i < interLen; i++) {
+            interString.append(" ");
+        }
+        int largerInterCount = diff - interLen * (row.size() == 1 ? 1 : (row.size() - 1));
+        for (int i = 0; i < row.size(); i++) {
+            result.append(row.get(i));
+            if (isLastRow) {
+                if (i < row.size() - 1) {
+                    result.append(" ");
+                }
+            } else if (i < row.size() - 1 || row.size() == 1) {
+                if (i < row.size() - 1) {
+                    result.append(" ");
+                }
+                result.append(interString);
+                if (largerInterCount-- > 0) {
+                    result.append(" ");
+                }
+            }
+        }
+        if (isLastRow) {
+            while (result.length() < maxWidth) {
+                result.append(" ");
+            }
+        }
+        return result.toString();
+    }
+}
+
+
+Input: words = ["This", "is", "an", "example", "of", "text", "justification."], maxWidth = 16
+Output:
+[
+   "This    is    an",
+   "example  of text",
+   "justification.  "
+]
+
+
+
+
+Input: words = ["What","must","be","acknowledgment","shall","be"], maxWidth = 16
+Output:
+[
+  "What   must   be",
+  "acknowledgment  ",
+  "shall be        "
+]
+Explanation: Note that the last line is "shall be    " instead of "shall     be", because the last line must be left-justified instead of fully-justified.
+Note that the second line is also left-justified because it contains only one word.
+
+
+
+
+Input: words = ["Science","is","what","we","understand","well","enough","to","explain","to","a","computer.","Art","is","everything","else","we","do"], maxWidth = 20
+Output:
+[
+  "Science  is  what we",
+  "understand      well",
+  "enough to explain to",
+  "a  computer.  Art is",
+  "everything  else  we",
+  "do                  "
+]
+
