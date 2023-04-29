@@ -1,0 +1,41 @@
+Problem - Given a string path, which is an absolute path (starting with a slash '/') to a file or directory in a Unix-style file system,
+          convert it to the simplified canonical path.In a Unix-style file system, a period '.' refers to the current directory, a double
+          period '..' refers to the directory up a level, and any multiple consecutive slashes (i.e. '//') are treated as a single slash
+          '/'. For this problem, any other format of periods such as '...' are treated as file/directory names.
+          
+          
+Code:
+class Solution {
+   public String simplifyPath(String path) {
+    Stack<String> stack = new Stack<>();
+    Set<String> skip = new HashSet<>(Arrays.asList("..", ".", ""));
+    for (String dir : path.split("/")) {
+        if (dir.equals("..") && !stack.isEmpty())
+         stack.pop();
+        else if (!skip.contains(dir))
+         stack.push(dir);
+    }
+    StringBuilder res = new StringBuilder();
+    while(!stack.isEmpty()){
+            res.insert(0,stack.pop()).insert(0,"/");
+        }
+    return res.isEmpty() ? "/" : res.toString();
+    }
+}
+
+
+Input: path = "/home/"
+Output: "/home"
+Explanation: Note that there is no trailing slash after the last directory name.
+
+
+Input: path = "/../"
+Output: "/"
+Explanation: Going one level up from the root directory is a no-op, as the root level is the highest level you can go.
+
+
+Input: path = "/home//foo/"
+Output: "/home/foo"
+Explanation: In the canonical path, multiple consecutive slashes are replaced by a single one.
+
+
