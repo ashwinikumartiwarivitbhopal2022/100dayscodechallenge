@@ -1,0 +1,59 @@
+Problem - Given a positive integer n, generate an n x n matrix filled with elements from 1 to n2 in spiral order.
+
+
+Code:
+class Solution {
+    public int[][] generateMatrix(int n) {
+        if (n == 0) {
+            return new int[0][0];
+        }
+        int[][] matrix = new int[n][n];
+        int left = 0, right = n-1, top = 0, bottom = n-1, num = 1;
+        while (left <= right && top <= bottom) {
+            for (int i = left; i <= right; i++) {
+                matrix[top][i] = num++;
+            }
+            top++;
+            for (int i = top; i <= bottom; i++) {
+                matrix[i][right] = num++;
+            }
+            right--;
+            if (top <= bottom) {
+                for (int i = right; i >= left; i--) {
+                    matrix[bottom][i] = num++;
+                }
+                bottom--;
+            }
+            if (left <= right) {
+                for (int i = bottom; i >= top; i--) {
+                    matrix[i][left] = num++;
+                }
+                left++;
+            }
+        }
+        return matrix;
+    }
+}
+
+
+Input: n = 3
+Output: [[1,2,3],[8,9,4],[7,6,5]]
+
+Input: n = 1
+Output: [[1]]
+
+Explanation - Initialize an empty matrix of size n x n with all elements set to zero.
+
+              Define variables left, right, top, bottom, and num.
+              
+              Use a while loop to iterate over the matrix in a spiral order.
+              
+              In each iteration, fill in the top row, right column, bottom row, and left
+              column of the remaining submatrix, in that order.
+              
+              Increment/decrement the values of left, right, top, and bottom accordingly after 
+              each iteration, and update the value of num to be filled in the next iteration.
+              
+              Return the generated matrix.
+              
+              
